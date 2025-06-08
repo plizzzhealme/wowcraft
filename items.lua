@@ -1,4 +1,4 @@
-WealthTracker_Items = {
+buylist = {
     {id = 36860, name = "Eternal Fire", price = 405000},
     {id = 35627, name = "Eternal Shadow", price = 425000},
     {id = 35625, name = "Eternal Life", price = 350000},
