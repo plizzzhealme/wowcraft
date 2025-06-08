@@ -41,5 +41,5 @@ WealthTracker_Items = {
     {id = 47556, name = "Crusader Orb", price = 1700000},
     {id = 43102, name = "Frozen Orb", price = 600000},
     {id = 45087, name = "Runed Orb", price = 2200000},
-    {id = 49908, name = "Primordial Saronite", price = 3150000},
+    {id = 49908, name = "Primordial Saronite", price = 3100000},
 }
