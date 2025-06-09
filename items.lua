@@ -41,7 +41,7 @@ buylist = {
     {id = 47556, name = "Crusader Orb", price = 1700000},
     {id = 43102, name = "Frozen Orb", price = 550000},
     {id = 45087, name = "Runed Orb", price = 2200000},
-    {id = 49908, name = "Primordial Saronite", price = 3100000},
+    {id = 49908, name = "Primordial Saronite", price = 3150000},
     {id = 37701, name = "Crystallized Earth", price = 14500},
     {id = 37705, name = "Crystallized Water", price = 12500},
     {id = 37702, name = "Crystallized Fire", price = 40500},
