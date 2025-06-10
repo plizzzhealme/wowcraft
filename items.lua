@@ -13,6 +13,7 @@ buylist = {
     {id = 37700, name = "Crystallized Air", price = 35000},
     {id = 41163, name = "Titanium Bar", price = 530000},
     {id = 36910, name = "Titanium Ore", price = 265000},
+    {id = 37663, name = "Titansteel Bar", price = 2560000},
     {id = 33470, name = "Frostweave Cloth", price = 8000},
     {id = 41510, name = "Bolt of Frostweave", price = 40000},
     {id = 41511, name = "Bolt of Imbued Frostweave", price = 180000},
