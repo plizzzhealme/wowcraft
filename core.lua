@@ -3,6 +3,8 @@ local addonName, addon = {}
 SLASH_FUCK1 = "/fuck"
 SlashCmdList["FUCK"] = function(msg)
     local fuckCoef = 1.05
+    int buyDiscount = 0;
+    int bidDiscount = 0;
     
     if msg and msg ~= "" then
       fuckCoef = tonumber(msg) or 1.05
@@ -21,15 +23,28 @@ SlashCmdList["FUCK"] = function(msg)
                 local smartBid = item.price / fuckCoef
                 
                 if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then
+                    local lastMoney = GetMoney()
                     PlaceAuctionBid("list", i, buyoutPrice)
+
+                    if (lastMoney > GetMoney()) then
+                        buyDiscount = buyDicount + buyoutPrice
+                    end
                 elseif (not highestBidder)
                     and ((minBid + minIncrement) / count <= item.price)
                     and ((bidAmount + minIncrement) / count <= item.price) then
-                    PlaceAuctionBid("list", i, math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement))
+                    local lastMoney = GetMoney();
+                    bidPrice = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
+                    PlaceAuctionBid("list", i, )
+                    
+                    if (latMoney > GetMoney()) then
+                        bidDicount = bidDicount + bidPrice
+                    end
                 end
             end
         end
     end
+    print("BUYOUT PROFIT: " + buyDicount)
+    print("POSSIBLE BID PROFIT: " + bidDiscount)
 end
 
 SLASH_BUY1 = "/buy"
