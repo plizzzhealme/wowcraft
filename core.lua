@@ -2,13 +2,10 @@ local addonName, addon = {}
 
 SLASH_FUCK1 = "/fuck"
 SlashCmdList["FUCK"] = function(msg)
-    local fuckCoef = 1.05
-    local buyDiscount = 0
-    local bidDiscount = 0
+    local overbidProtection = 1.05
 
-    
     if msg and msg ~= "" then
-      fuckCoef = tonumber(msg) or 1.05
+      overbidProtection = tonumber(msg) or 1.05
     end
 
     if not AuctionFrame or not AuctionFrame:IsShown() then
@@ -21,23 +18,18 @@ SlashCmdList["FUCK"] = function(msg)
             local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
             
             if name == item.name then
-                local smartBid = item.price / fuckCoef
+                local smartBid = item.price / overbidProtection
                 
                 if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then
-                    buyDiscount = buyDiscount + (item.price * count - buyoutPrice)
                     PlaceAuctionBid("list", i, buyoutPrice)
                 elseif (not highestBidder)
                     and ((minBid + minIncrement) / count <= item.price)
                     and ((bidAmount + minIncrement) / count <= item.price) then
-                    bidPrice = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
-                    bidDicount = bidDiscount + (item.price * count - bidPrice)
-                    PlaceAuctionBid("list", i, bidPrice)
+                    PlaceAuctionBid("list", i, math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement))
                 end
             end
         end
     end
-    print(string.format("BUYOUT PROFIT: %.4f", buyDiscount / 10000))
-    print(string.format("POSSIBLE BID PROFIT: %.4f", bidDicount / 10000))
 end
 
 SLASH_BUY1 = "/buy"
