@@ -44,8 +44,8 @@ SlashCmdList["FUCK"] = function(msg)
             end
         end
     end
-    print("BUYOUT PROFIT: " + buyDicount)
-    print("POSSIBLE BID PROFIT: " + bidDiscount)
+    print(string.format("BUYOUT PROFIT: %.4f", buyDicount / 10000)
+    print(string.format("POSSIBLE BID PROFIT: %.4f", bidDiscount / 10000)
 end
 
 SLASH_BUY1 = "/buy"
