@@ -24,7 +24,7 @@ SlashCmdList["FUCK"] = function(msg)
                 local smartBid = item.price / fuckCoef
                 
                 if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then
-                    buyDiscount = buyDicount + (buyoutPrice - item.price)
+                    buyDiscount = buyDiscount + (buyoutPrice - item.price)
                     PlaceAuctionBid("list", i, buyoutPrice)
                 elseif (not highestBidder)
                     and ((minBid + minIncrement) / count <= item.price)
