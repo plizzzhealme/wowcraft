@@ -3,8 +3,8 @@ local addonName, addon = {}
 SLASH_FUCK1 = "/fuck"
 SlashCmdList["FUCK"] = function(msg)
     local fuckCoef = 1.05
-    int buyDiscount = 0;
-    int bidDiscount = 0;
+    int buyDiscount = 0
+    int bidDiscount = 0
     
     if msg and msg ~= "" then
       fuckCoef = tonumber(msg) or 1.05
