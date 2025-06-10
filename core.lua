@@ -35,7 +35,7 @@ SlashCmdList["FUCK"] = function(msg)
                     and ((bidAmount + minIncrement) / count <= item.price) then
                     local lastMoney = GetMoney();
                     bidPrice = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
-                    PlaceAuctionBid("list", i, )
+                    PlaceAuctionBid("list", i, bidPrice)
                     
                     if (latMoney > GetMoney()) then
                         bidDicount = bidDicount + bidPrice
