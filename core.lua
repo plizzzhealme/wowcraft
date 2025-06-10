@@ -38,13 +38,13 @@ SlashCmdList["FUCK"] = function(msg)
                     PlaceAuctionBid("list", i, bidPrice)
                     
                     if (latMoney > GetMoney()) then
-                        bidDicount = bidDicount + bidPrice
+                        bidDicount = bidDiscount + bidPrice
                     end
                 end
             end
         end
     end
-    print(string.format("BUYOUT PROFIT: %.4f", buyDicount / 10000))
+    print(string.format("BUYOUT PROFIT: %.4f", buyDiscount / 10000))
     print(string.format("POSSIBLE BID PROFIT: %.4f", bidDiscount / 10000))
 end
 
