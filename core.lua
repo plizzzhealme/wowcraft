@@ -5,6 +5,7 @@ SlashCmdList["FUCK"] = function(msg)
     local fuckCoef = 1.05
     local buyDiscount = 0
     local bidDiscount = 0
+
     
     if msg and msg ~= "" then
       fuckCoef = tonumber(msg) or 1.05
