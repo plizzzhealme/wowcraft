@@ -37,16 +37,19 @@ SlashCmdList["BUY"] = function()
     if not AuctionFrame or not AuctionFrame:IsShown() then 
         print("Open Auction House first") 
         return
-    end 
-    for i = 1, GetNumAuctionItems("list") do  
-        local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i) 
+    end
+
+    for _, item in ipairs(buylist) do
+        for i = 1, GetNumAuctionItems("list") do  
+            local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i) 
         
-        if name == item.name then 
-            if buyoutPrice/count <= item.price then  
-                PlaceAuctionBid("list", i, buyoutPrice) 
-            end
+            if name == item.name then 
+                if buyoutPrice/count <= item.price then  
+                    PlaceAuctionBid("list", i, buyoutPrice) 
+                end
+            end 
         end 
-    end 
+    end
 end
 
 SLASH_BUYLIST1 = "/buylist"
