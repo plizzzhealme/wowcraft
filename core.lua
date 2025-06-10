@@ -33,19 +33,18 @@ SlashCmdList["FUCK"] = function(msg)
 end
 
 SLASH_BUY1 = "/buy"
-SlashCmdList["BUY"] = function()
-    if not AuctionFrame or not AuctionFrame:IsShown() then
-        print("Open Auction House first")
+SlashCmdList["BUY"] = function() 
+    if not AuctionFrame or not AuctionFrame:IsShown() then 
+        print("Open Auction House first") 
         return
-    end
-    
-	for i = 1, GetNumAuctionItems("list") do 
+    end 
+    for i = 1, GetNumAuctionItems("list") do  
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i) 
         
         if name == item.name then 
-            if buyoutPrice/count <= item.price then 
+            if buyoutPrice/count <= item.price then  
                 PlaceAuctionBid("list", i, buyoutPrice) 
-            end 
+            end
         end 
     end 
 end
@@ -53,8 +52,10 @@ end
 SLASH_BUYLIST1 = "/buylist"
 SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
+    print("----------------------------------")
     for _, item in ipairs(buylist) do
         local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
         print(string.format("%s - %.4f", itemLink, item.price/10000))
     end
+    print("----------------------------------")
 end
