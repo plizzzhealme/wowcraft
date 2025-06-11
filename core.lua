@@ -1,6 +1,6 @@
 local addonName, addon = {}
 local overbidProtection = 1.05 -- Used to calculate min bid to make next bid more expensive than buylist, 1.05 is default, can be changed with parameters
-local sessionBuylist = {} -- Hastable with session buylist and purchase info based on buylist from items.lua
+local sessionBuylist = {} -- Hashtable with session buylist and purchase info based on buylist from items.lua
 
 for _, item in ipairs(buylist) do
     sessionBuylist[item.name] = {
@@ -13,6 +13,17 @@ for _, item in ipairs(buylist) do
         buyAmount = 0 -- amount spent on buyouts
     }
 end
+
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("CHAT_MSG_SYSTEM")
+
+frame:SetScript("OnEvent", function(self, event, msg)
+    if (strfind(msg, "Bid accepted") or strfind(msg, "won auction")) then
+        return -- Suppress the message
+    end
+    -- Let other addons process normal messages
+    return false
+end)
 
 -- Buy out all items from buylist on the current ah page, that fit the price
 -- Bid on everything that impossible to buyout with at least buylistPrice / overbidProtection (1.05 is default)
@@ -60,8 +71,8 @@ SlashCmdList["FUCK"] = function(msg)
     end
 end
 
-SLASH_SHOWSESSIONSTAT1= "/showsessionstat"
-SlashCmdList["SHOWSESSIONSTAT"] = function()
+SLASH_PURCHASEINFO1 = "/purchaseinfo"
+SlashCmdList["PURCHASEINFO"] = function()
     local buyoutDiscount = 0;
     local bidDiscount = 0;
     
