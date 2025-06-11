@@ -1,6 +1,6 @@
 local addonName, addon = {}
-local overbidProtection = 1.05 -- Used to calculate min bid to make next bid more expensive than buylist, 1.05 is default, can be changed with parameters
-local sessionBuylist = {} -- Hashtable with session buylist and purchase info based on buylist from items.lua
+local overbidProtection = 1.05 -- used to calculate min bid to make next bid more expensive than buylist, 1.05 is default, can be changed with parameters
+local sessionBuylist = {} -- hashtable with session buylist and purchase info based on buylist from items.lua
 
 for _, item in ipairs(buylist) do
     sessionBuylist[item.name] = {
@@ -13,17 +13,6 @@ for _, item in ipairs(buylist) do
         buyAmount = 0 -- amount spent on buyouts
     }
 end
-
-local frame = CreateFrame("Frame")
-frame:RegisterEvent("CHAT_MSG_SYSTEM")
-
-frame:SetScript("OnEvent", function(self, event, msg)
-    if (strfind(msg, "Bid accepted") or strfind(msg, "won auction")) then
-        return -- Suppress the message
-    end
-    -- Let other addons process normal messages
-    return false
-end)
 
 -- Buy out all items from buylist on the current ah page, that fit the price
 -- Bid on everything that impossible to buyout with at least buylistPrice / overbidProtection (1.05 is default)
@@ -44,27 +33,33 @@ SlashCmdList["FUCK"] = function(msg)
     for i = 1, GetNumAuctionItems("list") 
             do local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
         
-        -- Check if item from our buylist
-        if sessionBuylist[name] ~= nil then
+        if sessionBuylist[name] ~= nil then -- check if item from our buylist
             local item = sessionBuylist[name]
-
-            -- If buyout price exists and fits the buylist
-            if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
-                print("buying [x"..count.."] "..item.name.." "..(buyoutPrice/count/10000).." each"); -- print purchase info
+ 
+            if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then -- buyout price exists and fits the buylist
+				-- Save number of purchased items
+                sessionBuylist[name].buyCount = sessionBuylist[name].buyCount + count
+				
+				-- Save spent amount
+                sessionBuylist[name].buyAmount = sessionBuylist[name].buyAmount + buyoutPrice
                 
-                sessionBuylist[name].buyCount = sessionBuylist[name].buyCount + count -- save number of purchased items
-                sessionBuylist[name].buyAmount = sessionBuylist[name].buyAmount + buyoutPrice -- save spent amount
+				-- Buyout the item
+                PlaceAuctionBid("list", i, buyoutPrice)
+            elseif (not highestBidder) -- we don't have a bid on the item
+                and ((minBid + minIncrement) / count <= item.price) -- bid amount fits the buylist (for items without bids)
+                and ((bidAmount + minIncrement) / count <= item.price) then -- bid amount fits the buylist (for items that have bids from other players)
                 
-                PlaceAuctionBid("list", i, buyoutPrice) -- buyout the item
-            elseif (not highestBidder) -- if we don't have a bid on the item
-                and ((minBid + minIncrement) / count <= item.price) -- if bid amount fits the buylist (for items without bids)
-                and ((bidAmount + minIncrement) / count <= item.price) then -- if bid amount fits the buylist (for items that have bids from other players)
-                local smartBid = item.price / overbidProtection -- min safe bid per item
-                local amountToBid = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement) -- amount to bid shouldn't be less than smartBid
+				-- Min safe bid per item
+				local smartBid = item.price / overbidProtection
+				
+				-- Amount to bid shouldn't be less than smartBid
+                local amountToBid = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
                 
-                print("bidding [x"..count.."] "..item.name.." "..(amountToBid/count/10000).." each");
-                sessionBuylist[name].bidCount = sessionBuylist[name].bidCount + count -- save number of items bid on
-                sessionBuylist[name].bidAmount = sessionBuylist[name].bidAmount + amountToBid -- save spent amount
+				-- Save number of items bid on
+                sessionBuylist[name].bidCount = sessionBuylist[name].bidCount + count
+				
+				-- Save spent amount
+                sessionBuylist[name].bidAmount = sessionBuylist[name].bidAmount + amountToBid
                 PlaceAuctionBid("list", i, amountToBid) -- place a bid
             end
         end
@@ -73,61 +68,79 @@ end
 
 SLASH_PURCHASEINFO1 = "/purchaseinfo"
 SlashCmdList["PURCHASEINFO"] = function()
-    local buyoutDiscount = 0;
-    local bidDiscount = 0;
+    local buyDiscount = 0; -- gold saved on buyouts (based in difference with buylist price)
+    local bidDiscount = 0; -- gold saved on bids (based in difference with buylist price)
     
+	-- Run through the list to calculate total discounts
     for itemName, item in pairs(sessionBuylist) do
-        if (item.buyCount > 0) then
-            print("flag")
-            buyoutDiscount = buyoutDiscount + (item.price * item.buyCount - item.buyAmount)
+        if (item.buyCount > 0) then -- for buyouts
+            buyDiscount = buyDiscount + (item.price * item.buyCount - item.buyAmount)
         end
 
-        if (item.bidCount > 0) then
+        if (item.bidCount > 0) then -- for bids
             bidDiscount = bidDiscount + (item.price * item.bidCount - item.bidAmount)
         end
     end
     
+	print(string.format("BUYOUT DISCOUNT: %s", GetCoinTextureString(buyDiscount, 9)))
+	
     for itemName, item in pairs(sessionBuylist) do
         if (item.buyCount > 0) then
-            print(item.name.." x"..item.buyCount.." "..((item.buyAmount / item.buyCount /10000)).." average price, "..(item.buyAmount / 10000).." total");
+			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
+			local average = item.buyAmount / item.buyCount
+			
+			print(string.format("%s x%d %s", itemLink, item.buyCount, GetCoinTextureString(average, 9)))
         end
-
+	end
+	
+	print(string.format("BID DISCOUNT: %s", GetCoinTextureString(bidDiscount, 9)))
+	
+	for itemName, item in pairs(sessionBuylist) do
         if (item.bidCount > 0) then
-            print(item.name.." x"..item.bidCount.." "..((item.bidAmount / item.bidCount /10000)).." average price, "..(item.bidAmount / 10000).." total");
+			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
+			local average = item.bidAmount / item.bidCount
+			
+			print(string.format("%s x%d %s", itemLink, item.buyCount, GetCoinTextureString(average, 9)))
         end
     end
-
-    print("Buy discount: "..buyoutDiscount/10000);
-    print("Bid discount: "..bidDiscount/10000);
 end
 
+-- Buy out all items from buylist on the current ah page, that fit the price
+-- No bids, only buyouts
 SLASH_BUY1 = "/buy"
 SlashCmdList["BUY"] = function() 
-    if not AuctionFrame or not AuctionFrame:IsShown() then 
-        print("Open Auction House first") 
+    -- Check if we on the ah
+    if not AuctionFrame or not AuctionFrame:IsShown() then
         return
     end
-
-    for _, item in ipairs(buylist) do
-        for i = 1, GetNumAuctionItems("list") do  
-            local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i) 
+    
+    for i = 1, GetNumAuctionItems("list") 
+            do local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
         
-            if name == item.name then 
-                if buyoutPrice/count <= item.price then  
-                    PlaceAuctionBid("list", i, buyoutPrice) 
-                end
-            end 
-        end 
+        -- Check if item from our buylist
+        if sessionBuylist[name] ~= nil then
+		
+            local item = sessionBuylist[name]
+			
+            -- If buyout price exists and fits the buylist
+            if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
+                print("buying [x"..count.."] "..item.name.." "..(buyoutPrice/count/10000).." each"); -- print purchase info
+                
+                sessionBuylist[name].buyCount = sessionBuylist[name].buyCount + count -- save number of purchased items
+                sessionBuylist[name].buyAmount = sessionBuylist[name].buyAmount + buyoutPrice -- save spent amount
+                
+                PlaceAuctionBid("list", i, buyoutPrice) -- buyout the item
+			end
+        end
     end
 end
 
+-- Show your current buylist in [item link] - [item price] format
 SLASH_BUYLIST1 = "/buylist"
 SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
-    print("----------------------------------")
     for _, item in ipairs(buylist) do
         local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
-        print(string.format("%s - %.4f", itemLink, item.price/10000))
+        print(string.format("%s %s", itemLink, GetCoinTextureString(item.price)))
     end
-    print("----------------------------------")
 end
