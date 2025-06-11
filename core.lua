@@ -60,6 +60,7 @@ SlashCmdList["FUCK"] = function(msg)
 				
 				-- Save spent amount
                 sessionBuylist[name].bidAmount = sessionBuylist[name].bidAmount + amountToBid
+				
                 PlaceAuctionBid("list", i, amountToBid) -- place a bid
             end
         end
@@ -82,6 +83,7 @@ SlashCmdList["PURCHASEINFO"] = function()
         end
     end
     
+	-- Print buyout info
 	print(string.format("BUYOUT DISCOUNT: %s", GetCoinTextureString(buyDiscount, 9)))
 	
     for itemName, item in pairs(sessionBuylist) do
@@ -93,6 +95,7 @@ SlashCmdList["PURCHASEINFO"] = function()
         end
 	end
 	
+	-- Print bid info
 	print(string.format("BID DISCOUNT: %s", GetCoinTextureString(bidDiscount, 9)))
 	
 	for itemName, item in pairs(sessionBuylist) do
@@ -100,7 +103,7 @@ SlashCmdList["PURCHASEINFO"] = function()
 			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
 			local average = item.bidAmount / item.bidCount
 			
-			print(string.format("%s x%d %s", itemLink, item.buyCount, GetCoinTextureString(average, 9)))
+			print(string.format("%s x%d %s", itemLink, item.bidCount, GetCoinTextureString(average, 9)))
         end
     end
 end
