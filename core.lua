@@ -83,9 +83,8 @@ SlashCmdList["PURCHASEINFO"] = function()
         end
     end
     
-	-- Print buyout info
-	print(string.format("BUYOUT DISCOUNT: %s", GetCoinTextureString(buyDiscount, 9)))
 	
+	print("BUYOUTS:");
     for itemName, item in pairs(sessionBuylist) do
         if (item.buyCount > 0) then
 			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
@@ -95,9 +94,8 @@ SlashCmdList["PURCHASEINFO"] = function()
         end
 	end
 	
-	-- Print bid info
-	print(string.format("BID DISCOUNT: %s", GetCoinTextureString(bidDiscount, 9)))
 	
+	print("BIDS:");
 	for itemName, item in pairs(sessionBuylist) do
         if (item.bidCount > 0) then
 			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
@@ -106,6 +104,11 @@ SlashCmdList["PURCHASEINFO"] = function()
 			print(string.format("%s x%d %s", itemLink, item.bidCount, GetCoinTextureString(average, 9)))
         end
     end
+    
+    -- Print bid info
+	print(string.format("BID DELTA: %s", GetCoinTextureString(bidDiscount)))
+    -- Print buyout info
+	print(string.format("BUYOUT DELTA: %s", GetCoinTextureString(buyDiscount)))
 end
 
 -- Buy out all items from buylist on the current ah page, that fit the price
