@@ -12,7 +12,7 @@ buylist = {
     {id = 37704, name = "Crystallized Life", price = 35000},
     {id = 37700, name = "Crystallized Air", price = 33000},
     {id = 41163, name = "Titanium Bar", price = 510000},
-    {id = 36910, name = "Titanium Ore", price = 240000},
+    {id = 36910, name = "Titanium Ore", price = 255000},
     {id = 36913, name = "Saronite Bar", price = 72000},
     {id = 36912, name = "Saronite Ore", price = 36000},
     {id = 37663, name = "Titansteel Bar", price = 2510000},
