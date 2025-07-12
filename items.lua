@@ -26,7 +26,7 @@ buylist = {
     {id = 34052, name = "Dream Shard", price = 240000},
     {id = 34053, name = "Small Dream Shard", price = 80000},
     {id = 34054, name = "Infinite Dust", price = 55000},
-    {id = 34057, name = "Abyss Crystal", price = 460000},
+    {id = 34057, name = "Abyss Crystal", price = 465000},
     {id = 34055, name = "Greater Cosmic Essence", price = 110000},
     {id = 36908, name = "Frost Lotus", price = 220000},
     {id = 33567, name = "Borean Leather Scraps", price = 4833},
