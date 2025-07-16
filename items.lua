@@ -45,7 +45,7 @@ buylist = {
     {id = 41245, name = "Deadly Saronite Dirk", price = 591000},
     {id = 38426, name = "Eternium Thread", price = 24000},
     {id = 40533, name = "Walnut Stock", price = 50000},
-    {id = 47556, name = "Crusader Orb", price = 1700000},
+    {id = 47556, name = "Crusader Orb", price = 1800000},
     {id = 43102, name = "Frozen Orb", price = 550000},
     {id = 45087, name = "Runed Orb", price = 2200000},
     {id = 49908, name = "Primordial Saronite", price = 3350000},
