@@ -48,5 +48,5 @@ buylist = {
     {id = 47556, name = "Crusader Orb", price = 1800000},
     {id = 43102, name = "Frozen Orb", price = 550000},
     {id = 45087, name = "Runed Orb", price = 2200000},
-    {id = 49908, name = "Primordial Saronite", price = 3350000},
+    {id = 49908, name = "Primordial Saronite", price = 3400000},
 }
