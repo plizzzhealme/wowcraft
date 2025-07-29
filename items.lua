@@ -33,7 +33,7 @@ buylist = {
     {id = 33568, name = "Borean Leather", price = 27500},
     {id = 38425, name = "Heavy Borean Leather", price = 165000},
     {id = 44128, name = "Arctic Fur", price = 1650000},
-    {id = 38557, name = "Icy Dragonscale", price = 80000},
+    {id = 38557, name = "Icy Dragonscale", price = 85000},
     {id = 38558, name = "Nerubian Chitin", price = 20000},
     {id = 36919, name = "Cardinal Ruby", price = 1500000},
     {id = 36934, name = "Eye of Zul", price = 600000},
