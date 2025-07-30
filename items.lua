@@ -1,7 +1,7 @@
 buylist = {
     {id = 36860, name = "Eternal Fire", price = 410000},
     {id = 35627, name = "Eternal Shadow", price = 415000},
-    {id = 35625, name = "Eternal Life", price = 370000},
+    {id = 35625, name = "Eternal Life", price = 350000},
     {id = 35624, name = "Eternal Earth", price = 155000},
     {id = 35623, name = "Eternal Air", price = 300000},
     {id = 35622, name = "Eternal Water", price = 150000},
