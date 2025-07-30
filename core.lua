@@ -1,16 +1,12 @@
 local addonName, addon = {}
 local overbidProtection = 1.05 -- used to calculate min bid to make next bid more expensive than buylist, 1.05 is default, can be changed with parameters
-local sessionBuylist = {} -- hashtable with session buylist and purchase info based on buylist from items.lua
+local sessionBuylist = {} -- hashtable with session buylist
 
 for _, item in ipairs(buylist) do
     sessionBuylist[item.name] = {
         id = item.id,
         name = item.name,
-        price = item.price,
-        bidCount = 0, -- number of items bid on
-        bidAmount = 0, -- amount spent on bids
-        buyCount = 0, -- number of items bought out
-        buyAmount = 0 -- amount spent on buyouts
+        price = item.price
     }
 end
 
@@ -37,13 +33,6 @@ SlashCmdList["FUCK"] = function(msg)
             local item = sessionBuylist[name]
  
             if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then -- buyout price exists and fits the buylist
-				-- Save number of purchased items
-                sessionBuylist[name].buyCount = sessionBuylist[name].buyCount + count
-				
-				-- Save spent amount
-                sessionBuylist[name].buyAmount = sessionBuylist[name].buyAmount + buyoutPrice
-                
-				-- Buyout the item
                 PlaceAuctionBid("list", i, buyoutPrice)
             elseif (not highestBidder) -- we don't have a bid on the item
                 and ((minBid + minIncrement) / count <= item.price) -- bid amount fits the buylist (for items without bids)
@@ -54,61 +43,17 @@ SlashCmdList["FUCK"] = function(msg)
 				
 				-- Amount to bid shouldn't be less than smartBid
                 local amountToBid = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
-                
-				-- Save number of items bid on
-                sessionBuylist[name].bidCount = sessionBuylist[name].bidCount + count
 				
-				-- Save spent amount
-                sessionBuylist[name].bidAmount = sessionBuylist[name].bidAmount + amountToBid
+				if (buyoutPrice > 0) then
+				print(GetCoinTextureString(amountToBid))
+					amountToBid = math.min(amountToBid, buyoutPrice/1.05)
+				print(GetCoinTextureString(amountToBid))
+				end
 				
                 PlaceAuctionBid("list", i, amountToBid) -- place a bid
             end
         end
     end
-end
-
-SLASH_PURCHASEINFO1 = "/purchaseinfo"
-SlashCmdList["PURCHASEINFO"] = function()
-    local buyDiscount = 0; -- gold saved on buyouts (based in difference with buylist price)
-    local bidDiscount = 0; -- gold saved on bids (based in difference with buylist price)
-    
-	-- Run through the list to calculate total discounts
-    for itemName, item in pairs(sessionBuylist) do
-        if (item.buyCount > 0) then -- for buyouts
-            buyDiscount = buyDiscount + (item.price * item.buyCount - item.buyAmount)
-        end
-
-        if (item.bidCount > 0) then -- for bids
-            bidDiscount = bidDiscount + (item.price * item.bidCount - item.bidAmount)
-        end
-    end
-    
-	
-	print("BUYOUTS:");
-    for itemName, item in pairs(sessionBuylist) do
-        if (item.buyCount > 0) then
-			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
-			local average = item.buyAmount / item.buyCount
-			
-			print(string.format("%s x%d %s", itemLink, item.buyCount, GetCoinTextureString(average, 9)))
-        end
-	end
-	
-	
-	print("BIDS:");
-	for itemName, item in pairs(sessionBuylist) do
-        if (item.bidCount > 0) then
-			local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
-			local average = item.bidAmount / item.bidCount
-			
-			print(string.format("%s x%d %s", itemLink, item.bidCount, GetCoinTextureString(average, 9)))
-        end
-    end
-    
-    -- Print bid info
-	print(string.format("BID DELTA: %s", GetCoinTextureString(bidDiscount)))
-    -- Print buyout info
-	print(string.format("BUYOUT DELTA: %s", GetCoinTextureString(buyDiscount)))
 end
 
 -- Buy out all items from buylist on the current ah page, that fit the price
@@ -125,16 +70,10 @@ SlashCmdList["BUY"] = function()
         
         -- Check if item from our buylist
         if sessionBuylist[name] ~= nil then
-		
             local item = sessionBuylist[name]
 			
             -- If buyout price exists and fits the buylist
             if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
-                print("buying [x"..count.."] "..item.name.." "..(buyoutPrice/count/10000).." each"); -- print purchase info
-                
-                sessionBuylist[name].buyCount = sessionBuylist[name].buyCount + count -- save number of purchased items
-                sessionBuylist[name].buyAmount = sessionBuylist[name].buyAmount + buyoutPrice -- save spent amount
-                
                 PlaceAuctionBid("list", i, buyoutPrice) -- buyout the item
 			end
         end
