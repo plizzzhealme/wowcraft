@@ -47,6 +47,7 @@ SlashCmdList["FUCK"] = function(msg)
 				if (buyoutPrice > 0) then
 				print(GetCoinTextureString(amountToBid))
 					amountToBid = math.min(amountToBid, buyoutPrice/1.05)
+					amountToBid = math.max(amountToBid, minBid + minIncrement)
 				print(GetCoinTextureString(amountToBid))
 				end
 				
