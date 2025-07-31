@@ -30,7 +30,12 @@ SlashCmdList["FUCK"] = function(msg)
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count
             local maxPrice = item.price * count
-            local smartBid = math.min(maxPrice / overbidProtection, buyoutCost / 1.05)
+            local smartBid = maxPrice / overbidProtection
+            local minPrice = smartBid
+            
+            if buyoutPrice > 0 then
+                minPrice = math.min(minPrice, buyoutPrice / 1.05)
+            end
             
             if buyoutCost <= item.price and buyoutPrice > 0 then
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
