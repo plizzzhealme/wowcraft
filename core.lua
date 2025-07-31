@@ -43,7 +43,7 @@ SlashCmdList["FUCK"] = function(msg)
             else
                 if (bidCost <= item.price) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("%s: nextbid %s , smartbid %s, minPrice %s, amountToBid %s", name, GetColoredMoney(nextBid/count), GetColoredMoney(smartBid/count), GetColoredMoney(minPrice/count), GetColoredMoney(amountToBid/count)))
+                    print(string.format("%s: buy %s, next %s , smart %s, minPrice %s, toBid %s", name, GetColoredMoney(buyoutPrice/count), GetColoredMoney(nextBid/count), GetColoredMoney(smartBid/count), GetColoredMoney(minPrice/count), GetColoredMoney(amountToBid/count)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
@@ -58,10 +58,10 @@ function GetColoredMoney(copper)
     -- Classic WoW color codes
     local goldColor = "|cFFFFD700"   -- Gold (yellow)
     local silverColor = "|cFFC0C0C0" -- Silver (light gray)
-    local copperColor = "|cFFCC9900" -- Copper (orange-brown)
+    local copperColor = "|cFFB87333" -- Copper (orange-brown)
     
     return string.format(
-        "%s%02dg%s%02ds%s%02dc|r",
+        "%s%02d%s%02d%s%02d|r",
         goldColor, gold,
         silverColor, silver,
         copperColor, copper
