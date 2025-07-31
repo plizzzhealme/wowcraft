@@ -27,22 +27,32 @@ SlashCmdList["FUCK"] = function(msg)
             local item = sessionBuylist[name]
  
             if buyoutPrice > 0 then
-				local ahPrice = buyoutPrice / count
+				local buyoutCost = buyoutPrice / count
 				
-				if ahPrice <= item.price then
+				if buyoutCost <= item.price then
 					PlaceAuctionBid("list", i, buyoutPrice)
-				elseif (not highestBidder) and  (ahPrice / 1.05 <= item.price) then
-					PlaceAuctionBid("list", i, buyoutPrice / 1.05)
+				elseif (not highestBidder) and  (buyoutCost / 1.05 <= item.price) then
+					local nextBid = math.max(minBid, bidAmount) + minIncrement
+					local bidCost = nextBid / count
+					
+					if bidCost <= item.price then
+						PlaceAuctionBid("list", i, math.max(buyoutPrice / 1.05, nextBid))
+					end
 				end
-            elseif (not highestBidder) and ((minBid + minIncrement) / count <= item.price)and ((bidAmount + minIncrement) / count <= item.price) then
-				local smartBid = item.price / overbidProtection
-                local amountToBid = math.max(minBid + minIncrement, smartBid * count, bidAmount + minIncrement)
+            elseif (not highestBidder) then
+				local nextBid = math.max(minBid, bidAmount) + minIncrement
+				local bidCost = nextBid / count
 				
-                PlaceAuctionBid("list", i, amountToBid)
+				if bidCost <= item.price then
+					local smartBid = item.price * count / overbidProtection
+					PlaceAuctionBid("list", i, math.max(nextBid, smartBid))
+				end
             end
         end
     end
 end
+
+
 
 SLASH_BUY1 = "/buy"
 SlashCmdList["BUY"] = function() 
