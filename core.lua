@@ -35,7 +35,7 @@ SlashCmdList["FUCK"] = function(msg)
             if buyoutCost <= item.price then
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
             else
-                if bidCost <= item.price then
+                if (bidCost <= item.price) and (not highestBidder) then
                     local amountToBid = math.max(smartBid, nextBid)
                     
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
