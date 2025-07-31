@@ -43,7 +43,7 @@ SlashCmdList["FUCK"] = function(msg)
             else
                 if (bidCost <= item.price) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("nextbid %s , smartbid %s, minPrice %s, amountToBid %s", itemLink, GetCoinTextureText(nextBid/count), GetCoinTextureText(smartBid/count), GetCoinTextureText(minPrice/count), GetCoinTextureText(amountToBid/count)))
+                    print(string.format("%s nextbid %s , smartbid %s, minPrice %s, amountToBid %s", itemLink, GetCoinTextureText(nextBid/count), GetCoinTextureText(smartBid/count), GetCoinTextureText(minPrice/count), GetCoinTextureText(amountToBid/count)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
