@@ -74,7 +74,6 @@ SlashCmdList["BUY"] = function()
 end
 
 SLASH_BUYLIST1 = "/buylist"
-SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
     for _, item in ipairs(buylist) do
         local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
