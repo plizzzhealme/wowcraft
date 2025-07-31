@@ -21,38 +21,36 @@ SlashCmdList["FUCK"] = function(msg)
     end
     
     for i = 1, GetNumAuctionItems("list") do
-		local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
+        local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
         
         if sessionBuylist[name] ~= nil then
             local item = sessionBuylist[name]
  
             if buyoutPrice > 0 then
-				local buyoutCost = buyoutPrice / count
-				
-				if buyoutCost <= item.price then
-					PlaceAuctionBid("list", i, buyoutPrice)
-				elseif (not highestBidder) and  (buyoutCost / 1.05 <= item.price) then
-					local nextBid = math.max(minBid, bidAmount) + minIncrement
-					local bidCost = nextBid / count
-					
-					if bidCost <= item.price then
-						PlaceAuctionBid("list", i, math.max(buyoutPrice / 1.05, nextBid))
-					end
-				end
+                local buyoutCost = buyoutPrice / count
+                
+                if buyoutCost <= item.price then
+                    PlaceAuctionBid("list", i, buyoutPrice)
+                elseif (not highestBidder) and  (buyoutCost / 1.05 <= item.price) then
+                    local nextBid = math.max(minBid, bidAmount) + minIncrement
+                    local bidCost = nextBid / count
+                    
+                    if bidCost <= item.price then
+                        PlaceAuctionBid("list", i, math.max(buyoutPrice / 1.05, nextBid))
+                    end
+                end
             elseif (not highestBidder) then
-				local nextBid = math.max(minBid, bidAmount) + minIncrement
-				local bidCost = nextBid / count
-				
-				if bidCost <= item.price then
-					local smartBid = item.price * count / overbidProtection
-					PlaceAuctionBid("list", i, math.max(nextBid, smartBid))
-				end
+                local nextBid = math.max(minBid, bidAmount) + minIncrement
+                local bidCost = nextBid / count
+                
+                if bidCost <= item.price then
+                    local smartBid = item.price * count / overbidProtection
+                    PlaceAuctionBid("list", i, math.max(nextBid, smartBid))
+                end
             end
         end
     end
 end
-
-
 
 SLASH_BUY1 = "/buy"
 SlashCmdList["BUY"] = function() 
@@ -61,14 +59,14 @@ SlashCmdList["BUY"] = function()
     end
     
     for i = 1, GetNumAuctionItems("list") do
-		local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
+        local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
         
         if sessionBuylist[name] ~= nil then
             local item = sessionBuylist[name]
-			
+            
             if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
                 PlaceAuctionBid("list", i, buyoutPrice)
-			end
+            end
         end
     end
 end
@@ -78,7 +76,7 @@ SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
     for _, item in ipairs(buylist) do
         local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
-		
+        
         print(string.format("%s %s", itemLink, GetCoinTextureString(item.price)))
     end
 end
