@@ -38,19 +38,35 @@ SlashCmdList["FUCK"] = function(msg)
             end
             
             if buyoutCost <= item.price and buyoutPrice > 0 then
-                print(string.format("%s: buyout %s",name, GetCoinText(buyoutPrice / count)))
+                print(string.format("%s: buyout %s",name, GetColoredMoney(buyoutPrice / count)))
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
             else
                 if (bidCost <= item.price) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("%s: nextbid %s , smartbid %s, minPrice %s, amountToBid %s", name, GetCoinText(nextBid/count), GetCoinText(smartBid/count), GetCoinText(minPrice/count), GetCoinText(amountToBid/count)))
+                    print(string.format("%s: nextbid %s , smartbid %s, minPrice %s, amountToBid %s", name, GetColoredMoney(nextBid/count), GetColoredMoney(smartBid/count), GetColoredMoney(minPrice/count), GetColoredMoney(amountToBid/count)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
         end
     end
 end
-
+function GetColoredMoney(copper)
+    local gold = math.floor(copper / 10000)
+    local silver = math.floor((copper % 10000) / 100)
+    local copper = copper % 100
+    
+    -- Classic WoW color codes
+    local goldColor = "|cFFFFD700"   -- Gold (yellow)
+    local silverColor = "|cFFC0C0C0" -- Silver (light gray)
+    local copperColor = "|cFFCC9900" -- Copper (orange-brown)
+    
+    return string.format(
+        "%s%02dg%s%02ds%s%02dc|r",
+        goldColor, gold,
+        silverColor, silver,
+        copperColor, copper
+    )
+end
 
 
 SLASH_BUY1 = "/buy"
