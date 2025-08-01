@@ -22,7 +22,7 @@ SlashCmdList["FUCK"] = function(msg)
     
     for i = 1, GetNumAuctionItems("list") do
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
-        
+        print(i)
         if sessionBuylist[name] ~= nil then
             local item = sessionBuylist[name]
             
