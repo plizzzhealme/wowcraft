@@ -1,1 +1,7 @@
+## Interface: 30300
+## Title: Wowcraft
+## Version: 1.0
 
+mats.lua
+util.lua
+core.lua
