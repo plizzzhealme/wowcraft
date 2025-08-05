@@ -34,12 +34,12 @@ SlashCmdList["FUCK"] = function(msg)
             end
             
             if buyoutCost <= item.cost and buyoutPrice > 0 then
-                print(string.format("%s: buying [x%d] %s each %s total",itemLink, count, GetMoneyStringPlain(buyoutPrice / count), GetMoneyStringPlain(buyoutPrice)))
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
+                print(string.format("BUYING %s: [%d] x [%s] TOTAL [%s]",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
             else
                 if (bidCost <= item.cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("%s: bidding [x%d] %s each %s total", itemLink, count, GetMoneyStringPlain(amountToBid/count), GetMoneyStringPlain(amountToBid)))
+                    print(string.format("BUYING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
@@ -91,7 +91,7 @@ SlashCmdList["BUYLIST"] = function()
         local itemData = buylist[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s %s", itemLink, GetMoneyStringPlain(itemData.cost)))
+        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
     end
 end
 
@@ -130,7 +130,7 @@ SlashCmdList["BOELIST"] = function()
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
             
-            print(string.format("%s [%s] / [%s]", itemLink, GetMoneyStringPlain(itemData.cost), GetMoneyString(itemData.nonprofit)))
+            print(string.format("%s COST [%s] NON-PROFIT [%s]", itemLink, GetMoneyString(itemData.cost), GetMoneyString(itemData.nonprofit)))
             anyItemsShown = true
         end
     end
