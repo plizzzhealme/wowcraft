@@ -37,7 +37,7 @@ function buyBid(msg)
             else
                 if (bidCost <= item.cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("BUYING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
+                    print(string.format("BIDDING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
