@@ -24,7 +24,7 @@ function GetMoneyStringPlain(money)
 	end
 end
 
-function showBuylist()
+function ShowBuylist()
 	local buylistOrder = {
     36860, 35627, 35625, 35624, 35623, 35622, 
     37701, 37705, 37702, 37703, 37704, 37700,
@@ -38,14 +38,14 @@ function showBuylist()
     }
     
     for _, itemId in ipairs(buylistOrder) do
-        local itemData = buylist[itemId]
+        local itemData = BUYLIST[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
         print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
     end
 end
 
-function showBoelist()
+function ShowBoelist()
 	local boelistOrder = {
         47573, 47572,  -- [1] Horde, [2] Alliance
         47590, 47589,  -- [3] Horde, [4] Alliance
@@ -73,7 +73,7 @@ function showBoelist()
         local hordeItemId = boelistOrder[i]
         local allianceItemId = boelistOrder[i+1]
         local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
-        local itemData = boelist[itemId]
+        local itemData = BOE_245[itemId]
         
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
