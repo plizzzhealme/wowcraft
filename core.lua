@@ -25,7 +25,7 @@ SlashCmdList["FUCK"] = function(msg)
             local buyoutCost = buyoutPrice / count
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count
-            local maxPrice = item.price * count
+            local maxPrice = item.cost * count
             local smartBid = maxPrice / overbidProtection
             local minPrice = smartBid
             
@@ -33,11 +33,11 @@ SlashCmdList["FUCK"] = function(msg)
                 minPrice = math.min(minPrice, buyoutPrice / BID_FACTOR)
             end
             
-            if buyoutCost <= item.price and buyoutPrice > 0 then
+            if buyoutCost <= item.cost and buyoutPrice > 0 then
                 print(string.format("%s: buying [x%d] %s each %s total",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
             else
-                if (bidCost <= item.price) and (not highestBidder) then
+                if (bidCost <= item.cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
                     print(string.format("%s: bidding [x%d] %s each %s total", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
@@ -65,7 +65,7 @@ SlashCmdList["BUY"] = function()
         if buylist[itemId] ~= nil then
             local item = buylist[itemId]
             
-            if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
+            if (buyoutPrice > 0) and (buyoutPrice/count <= item.cost) then 
                 PlaceAuctionBid("list", i, buyoutPrice)
             end
         end
