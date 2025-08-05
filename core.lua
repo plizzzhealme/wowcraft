@@ -56,6 +56,10 @@ SlashCmdList["BUY"] = function()
         local itemLink = GetAuctionItemLink("list", i)
         local itemId = itemLink and itemLink:match("item:(%d+):") or nil
         
+        if itemId then
+            itemId = tonumber(itemId)
+        end
+        
         if buylist[itemId] ~= nil then
             local item = buylist[itemId]
             
