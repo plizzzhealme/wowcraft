@@ -21,7 +21,7 @@ SlashCmdList["FUCK"] = function(msg)
         end
         
         if buylist[itemId] ~= nil or boelist[itemId] ~= nil then
-            local item = buylist[itemId]
+            local item = buylist[itemId] or boelist[itemId]
             local buyoutCost = buyoutPrice / count
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count
