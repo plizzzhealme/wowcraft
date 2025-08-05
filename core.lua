@@ -2,20 +2,20 @@ local addonName, addon = {}
 
 SLASH_BUYBID1 = "/buybid"
 SlashCmdList["BUYBID"] = function(msg)
-    buyBid(msg)
+    BuyBid(msg)
 end
 
 SLASH_BUY1 = "/buy"
 SlashCmdList["BUY"] = function() 
-    buy()
+    Buy()
 end
 
 SLASH_BUYLIST1 = "/buylist"
 SlashCmdList["BUYLIST"] = function()
-    showBuylist()
+    ShowBuylist()
 end
 
 SLASH_BOELIST1 = "/boelist"
 SlashCmdList["BOELIST"] = function()
-    showBoelist()
+    ShowBoelist()
 end
