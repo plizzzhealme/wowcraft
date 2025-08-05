@@ -2,8 +2,8 @@
 ## Title: Wowcraft
 ## Version: 1.0
 
-mats.lua
-boes.lua
+items/mats.lua
+items/boes.lua
 util.lua
 auction.lua
 core.lua
