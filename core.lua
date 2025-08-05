@@ -34,12 +34,12 @@ SlashCmdList["FUCK"] = function(msg)
             end
             
             if buyoutCost <= item.price and buyoutPrice > 0 then
-                print(string.format("%s: buying %d pcs %s each %s total",itemLink, count, GetColoredMoney(buyoutPrice / count), GetColoredMoney(buyoutPrice)))
+                print(string.format("%s: buying [x%d] %s each %s total",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
             else
                 if (bidCost <= item.price) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("%s: bidding %d pcs %s each %s total", itemLink, count, GetColoredMoney(amountToBid/count), GetColoredMoney(amountToBid)))
+                    print(string.format("%s: bidding [x%d] %s each %s total", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
@@ -91,7 +91,7 @@ SlashCmdList["BUYLIST"] = function()
         local itemData = buylist[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s %s", itemLink, GetCoinTextureString(itemData.price)))
+        print(string.format("%s %s", itemLink, GetMoneyString(itemData.price)))
     end
 end
 
