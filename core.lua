@@ -98,32 +98,50 @@ end
 SLASH_BOELIST1 = "/boelist"
 SLASH_BOELIST2 = "/boe"
 SlashCmdList["BOELIST"] = function()
-    -- BOE item IDs in your specified order
+    -- BOE item IDs with Horde (odd) and Alliance (even) pairs
     local boelistOrder = {
-        47573, 47572, 47590, 47589,
-        47571, 47570, 47592, 47591,
-        47575, 47574, 47594, 47593,
-        47586, 47585, 47604, 47603,
-        47588, 47587, 47606, 47605,
-        47582, 47581, 47600, 47599,
-        47684, 47583, 47601, 47602,
-        47577, 47576, 47596, 47595,
-        47580, 47579, 47598, 47597
+        47573, 47572,  -- [1] Horde, [2] Alliance
+        47590, 47589,  -- [3] Horde, [4] Alliance
+        47571, 47570,   -- [5] Horde, [6] Alliance
+        47592, 47591,  -- [7] Horde, [8] Alliance
+        47575, 47574,  -- [9] Horde, [10] Alliance
+        47594, 47593,  -- [11] Horde, [12] Alliance
+        47586, 47585,  -- [13] Horde, [14] Alliance
+        47604, 47603,  -- [15] Horde, [16] Alliance
+        47588, 47587,  -- [17] Horde, [18] Alliance
+        47606, 47605,  -- [19] Horde, [20] Alliance
+        47582, 47581,  -- [21] Horde, [22] Alliance
+        47600, 47599,  -- [23] Horde, [24] Alliance
+        47684, 47583,  -- [25] Horde, [26] Alliance
+        47601, 47602,  -- [27] Horde, [28] Alliance
+        47577, 47576,  -- [29] Horde, [30] Alliance
+        47596, 47595,  -- [31] Horde, [32] Alliance
+        47580, 47579,  -- [33] Horde, [34] Alliance
+        47598, 47597   -- [35] Horde, [36] Alliance
     }
     
-    for _, itemId in ipairs(boelistOrder) do
+    local playerFaction = UnitFactionGroup("player")
+    local anyItemsShown = false
+    
+    for i = 1, #boelistOrder, 2 do  -- Step by 2 to check pairs
+        local hordeItemId = boelistOrder[i]
+        local allianceItemId = boelistOrder[i+1]
+        local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
+        
         local itemData = boelist[itemId]
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
             
-            -- Print both prices with colored labels
             print(string.format("%s |cffffd700Cost:|r %s  |cff00ff00Non-profit:|r %s", 
                 itemLink, 
                 GetCoinTextureString(itemData.cost),
                 GetCoinTextureString(itemData.nonprofit)
             ))
-        else
-            print(string.format("|cffff0000Item not found in boelist:|r %d", itemId))
+            anyItemsShown = true
         end
+    end
+    
+    if not anyItemsShown then
+        print("|cffff0000No BOE items found for your faction|r")
     end
 end
