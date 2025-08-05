@@ -16,7 +16,11 @@ SlashCmdList["FUCK"] = function(msg)
     for i = 1, GetNumAuctionItems("list") do
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
         local itemLink = GetAuctionItemLink("list", i)
-        local itemId = itemLink and itemLink:match("item:(%d+):") or nil   
+        local itemId = itemLink and itemLink:match("item:(%d+):") or nil
+        
+        if itemId then
+            itemId = tonumber(itemId)
+        end
         
         if buylist[itemId] ~= nil then
             local item = buylist[itemId]
