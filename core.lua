@@ -98,7 +98,6 @@ end
 SLASH_BOELIST1 = "/boelist"
 SLASH_BOELIST2 = "/boe"
 SlashCmdList["BOELIST"] = function()
-    -- BOE item IDs with Horde (odd) and Alliance (even) pairs
     local boelistOrder = {
         47573, 47572,  -- [1] Horde, [2] Alliance
         47590, 47589,  -- [3] Horde, [4] Alliance
@@ -121,27 +120,18 @@ SlashCmdList["BOELIST"] = function()
     }
     
     local playerFaction = UnitFactionGroup("player")
-    local anyItemsShown = false
     
-    for i = 1, #boelistOrder, 2 do  -- Step by 2 to check pairs
+    for i = 1, #boelistOrder, 2 do
         local hordeItemId = boelistOrder[i]
         local allianceItemId = boelistOrder[i+1]
         local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
-        
         local itemData = boelist[itemId]
+        
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
             
-            print(string.format("%s |cffffd700Cost:|r %s  |cff00ff00Non-profit:|r %s", 
-                itemLink, 
-                GetMoneyString(itemData.cost),
-                GetMoneyString(itemData.nonprofit)
-            ))
+            print(string.format("%s [%s] / [%s]", itemLink, GetMoneyString(itemData.cost), GetMoneyString(itemData.nonprofit)))
             anyItemsShown = true
         end
-    end
-    
-    if not anyItemsShown then
-        print("|cffff0000No BOE items found for your faction|r")
     end
 end
