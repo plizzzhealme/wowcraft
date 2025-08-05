@@ -34,12 +34,12 @@ SlashCmdList["FUCK"] = function(msg)
             end
             
             if buyoutCost <= item.cost and buyoutPrice > 0 then
-                print(string.format("%s: buying [x%d] %s each %s total",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
+                print(string.format("%s: buying [x%d] %s each %s total",itemLink, count, GetMoneyStringPlain(buyoutPrice / count), GetMoneyStringPlain(buyoutPrice)))
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
             else
                 if (bidCost <= item.cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("%s: bidding [x%d] %s each %s total", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
+                    print(string.format("%s: bidding [x%d] %s each %s total", itemLink, count, GetMoneyStringPlain(amountToBid/count), GetMoneyStringPlain(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
                 end
             end
@@ -91,7 +91,7 @@ SlashCmdList["BUYLIST"] = function()
         local itemData = buylist[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s %s", itemLink, GetMoneyString(itemData.cost)))
+        print(string.format("%s %s", itemLink, GetMoneyStringPlain(itemData.cost)))
     end
 end
 
@@ -101,7 +101,7 @@ SlashCmdList["BOELIST"] = function()
     local boelistOrder = {
         47573, 47572,  -- [1] Horde, [2] Alliance
         47590, 47589,  -- [3] Horde, [4] Alliance
-        47571, 47570,   -- [5] Horde, [6] Alliance
+        47571, 47570,  -- [5] Horde, [6] Alliance
         47592, 47591,  -- [7] Horde, [8] Alliance
         47575, 47574,  -- [9] Horde, [10] Alliance
         47594, 47593,  -- [11] Horde, [12] Alliance
@@ -130,7 +130,7 @@ SlashCmdList["BOELIST"] = function()
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
             
-            print(string.format("%s [%s] / [%s]", itemLink, GetMoneyString(itemData.cost), GetMoneyString(itemData.nonprofit)))
+            print(string.format("%s [%s] / [%s]", itemLink, GetMoneyStringPlain(itemData.cost), GetMoneyString(itemData.nonprofit)))
             anyItemsShown = true
         end
     end
