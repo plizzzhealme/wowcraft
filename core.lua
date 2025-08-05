@@ -2,13 +2,6 @@ local addonName, addon = {}
 local overbidProtection = 1.05
 local sessionBuylist = {}
 
-for _, item in ipairs(buylist) do
-    sessionBuylist[item.name] = {
-        id = item.id,
-        name = item.name,
-        price = item.price
-    }
-end
 
 SLASH_FUCK1 = "/fuck"
 SlashCmdList["FUCK"] = function(msg)
@@ -22,10 +15,11 @@ SlashCmdList["FUCK"] = function(msg)
     
     for i = 1, GetNumAuctionItems("list") do
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
-            
-        if sessionBuylist[name] ~= nil then
-            local item = sessionBuylist[name]
-            
+        local itemLink = GetAuctionItemLink("list", i)
+        local itemId = itemLink and itemLink:match("item:(%d+):") or nil   
+        
+        if buylist[itemId] ~= nil then
+            local item = buylist[itemId]
             local buyoutCost = buyoutPrice / count
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count
@@ -59,9 +53,11 @@ SlashCmdList["BUY"] = function()
     
     for i = 1, GetNumAuctionItems("list") do
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
+        local itemLink = GetAuctionItemLink("list", i)
+        local itemId = itemLink and itemLink:match("item:(%d+):") or nil
         
-        if sessionBuylist[name] ~= nil then
-            local item = sessionBuylist[name]
+        if buylist[itemId] ~= nil then
+            local item = buylist[itemId]
             
             if (buyoutPrice > 0) and (buyoutPrice/count <= item.price) then 
                 PlaceAuctionBid("list", i, buyoutPrice)
@@ -73,9 +69,9 @@ end
 SLASH_BUYLIST1 = "/buylist"
 SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
-    for _, item in ipairs(buylist) do
-        local itemLink = select(2, GetItemInfo(item.id)) or ("|cff00ff00[Item " .. item.id .. "]|r")
+    for itemId, itemData in pairs(buylist) do
+        local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s %s", itemLink, GetCoinTextureString(item.price)))
+        print(string.format("%s %s", itemLink, GetCoinTextureString(itemData.price)))
     end
 end
