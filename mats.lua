@@ -5,7 +5,7 @@ buylist = {
     [35624] = {name = "Eternal Earth", price = 160000},
     [35623] = {name = "Eternal Air", price = 300000},
     [35622] = {name = "Eternal Water", price = 155000},
-    [37701] = {name = "Crystallized Fire", price = 41000},
+    [37702] = {name = "Crystallized Fire", price = 41000},
     [37705] = {name = "Crystallized Shadow", price = 41500},
     [37702] = {name = "Crystallized Life", price = 37000},
     [37703] = {name = "Crystallized Earth", price = 16000},
