@@ -10,7 +10,7 @@ buylist = {
     [37704] = {name = "Crystallized Life", price = 37000},
     [37701] = {name = "Crystallized Earth", price = 16000},
     [37700] = {name = "Crystallized Air", price = 30000},
-    [37700] = {name = "Crystallized Water", price = 15500},
+    [37705] = {name = "Crystallized Water", price = 15500},
     [41163] = {name = "Titanium Bar", price = 520000},
     [36910] = {name = "Titanium Ore", price = 260000},
     [36913] = {name = "Saronite Bar", price = 75000},
