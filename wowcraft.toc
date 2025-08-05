@@ -5,4 +5,5 @@
 mats.lua
 boes.lua
 util.lua
+auction.lua
 core.lua
