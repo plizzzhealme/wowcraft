@@ -1,4 +1,4 @@
-boelist = {
+boes = {
     ["Titanium Spikeguards"] = {cost = 28870000, nonprofit = 30389474},
     ["Titanium Razorplate"] = {cost = 42190000, nonprofit = 44410526},
     ["Saronite Swordbreakers"] = {cost = 29060000, nonprofit = 30589474},
