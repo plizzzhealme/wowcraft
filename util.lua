@@ -38,7 +38,7 @@ function ShowBuylist()
     }
     
     for _, itemId in ipairs(buylistOrder) do
-        local itemData = BUYLIST[itemId]
+        local itemData = MATS[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
         print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
@@ -73,7 +73,7 @@ function ShowBoelist()
         local hordeItemId = boelistOrder[i]
         local allianceItemId = boelistOrder[i+1]
         local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
-        local itemData = BOE_245[itemId]
+        local itemData = BOES[itemId]
         
         if itemData then
             local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")

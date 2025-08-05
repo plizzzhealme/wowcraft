@@ -1,4 +1,4 @@
-boelist = {
+BOES = {
     [47573] = {name = "Titanium Spikeguards (Horde)", cost = 28870000, nonprofit = 30390000},
     [47572] = {name = "Titanium Spikeguards (Alliance)", cost = 28870000, nonprofit = 30390000},
     [47590] = {name = "Titanium Razorplate (Horde)", cost = 42190000, nonprofit = 44410000},

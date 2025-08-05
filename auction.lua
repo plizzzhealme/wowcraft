@@ -1,13 +1,12 @@
 local BID_FACTOR = 1.05
 
-function buyBid(msg)
+function BuyBid(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
     end
 
-    if msg and msg ~= "" then
-      overbidProtection = tonumber(msg) or BID_FACTOR
-    end
+    local overbidProtection = tonumber(msg) or BID_FACTOR
+    print (overbidProtection)
     
     for i = 1, GetNumAuctionItems("list") do
         local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
@@ -18,8 +17,8 @@ function buyBid(msg)
             itemId = tonumber(itemId)
         end
         
-        if buylist[itemId] ~= nil or boelist[itemId] ~= nil then
-            local item = buylist[itemId] or boelist[itemId]
+        if MATS[itemId] ~= nil or BOES[itemId] ~= nil then
+            local item = MATS[itemId] or BOES[itemId]
             local buyoutCost = buyoutPrice / count
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count

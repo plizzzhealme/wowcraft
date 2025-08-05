@@ -1,4 +1,4 @@
-buylist = {
+MATS = {
     [36860] = {name = "Eternal Fire", cost = 410000},
     [35627] = {name = "Eternal Shadow", cost = 415000},
     [35625] = {name = "Eternal Life", cost = 370000},
