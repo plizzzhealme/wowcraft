@@ -134,8 +134,8 @@ SlashCmdList["BOELIST"] = function()
             
             print(string.format("%s |cffffd700Cost:|r %s  |cff00ff00Non-profit:|r %s", 
                 itemLink, 
-                GetCoinTextureString(itemData.cost),
-                GetCoinTextureString(itemData.nonprofit)
+                GetMoneyString(itemData.cost),
+                GetMoneyString(itemData.nonprofit)
             ))
             anyItemsShown = true
         end
