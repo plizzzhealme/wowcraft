@@ -1,7 +1,5 @@
 local addonName, addon = {}
-local overbidProtection = 1.05
-local sessionBuylist = {}
-
+local BID_FACTOR = 1.05
 
 SLASH_FUCK1 = "/fuck"
 SlashCmdList["FUCK"] = function(msg)
@@ -10,7 +8,7 @@ SlashCmdList["FUCK"] = function(msg)
     end
 
     if msg and msg ~= "" then
-      overbidProtection = tonumber(msg) or 1.05
+      overbidProtection = tonumber(msg) or BID_FACTOR
     end
     
     for i = 1, GetNumAuctionItems("list") do
@@ -32,7 +30,7 @@ SlashCmdList["FUCK"] = function(msg)
             local minPrice = smartBid
             
             if buyoutPrice > 0 then
-                minPrice = math.min(minPrice, buyoutPrice / 1.05)
+                minPrice = math.min(minPrice, buyoutPrice / BID_FACTOR)
             end
             
             if buyoutCost <= item.price and buyoutPrice > 0 then
@@ -77,7 +75,20 @@ end
 SLASH_BUYLIST1 = "/buylist"
 SLASH_BUYLIST2 = "/bl"
 SlashCmdList["BUYLIST"] = function()
-    for itemId, itemData in pairs(buylist) do
+    local buylistOrder = {
+    36860, 35627, 35625, 35624, 35623, 35622, 
+    37701, 37705, 37702, 37703, 37704, 37700,
+    41163, 36910, 36913, 36912, 37663, 33470,
+    41510, 41511, 41595, 41593, 41594, 42253,
+    34052, 34053, 34054, 34057, 34055, 36908,
+    33567, 33568, 38425, 44128, 38557, 38558,
+    36919, 36934, 36925, 36922, 36924, 36784,
+    41355, 41245, 38426, 40533, 47556, 43102,
+    45087, 49908
+    }
+    
+    for _, itemId in ipairs(buylistOrder) do
+        local itemData = buylist[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
         print(string.format("%s %s", itemLink, GetCoinTextureString(itemData.price)))
