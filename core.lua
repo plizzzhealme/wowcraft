@@ -91,7 +91,7 @@ SlashCmdList["BUYLIST"] = function()
         local itemData = buylist[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s %s", itemLink, GetMoneyString(itemData.price)))
+        print(string.format("%s %s", itemLink, GetMoneyString(itemData.cost)))
     end
 end
 
