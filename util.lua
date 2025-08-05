@@ -10,3 +10,16 @@ function GetMoneyString(money)
 		return format(COPPER_AMOUNT_TEXTURE, copper, 0, 0)
 	end
 end
+
+function GetMoneyStringPlain(money)
+	local gold = floor(money / 10000)
+	local silver = floor((money - gold * 10000) / 100)
+	local copper = mod(money, 100)
+	if gold > 0 then
+		return gold..GOLD_AMOUNT_SYMBOL.." "..silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
+	elseif silver > 0 then
+		return silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
+	else
+		return copper..COPPER_AMOUNT_SYMBOL
+	end
+end
