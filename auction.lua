@@ -68,3 +68,6 @@ function buy()
         end
     end
 end
+
+function bid()
+end
