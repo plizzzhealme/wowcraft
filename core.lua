@@ -94,3 +94,36 @@ SlashCmdList["BUYLIST"] = function()
         print(string.format("%s %s", itemLink, GetCoinTextureString(itemData.price)))
     end
 end
+
+SLASH_BOELIST1 = "/boelist"
+SLASH_BOELIST2 = "/boe"
+SlashCmdList["BOELIST"] = function()
+    -- BOE item IDs in your specified order
+    local boelistOrder = {
+        47573, 47572, 47590, 47589,
+        47571, 47570, 47592, 47591,
+        47575, 47574, 47594, 47593,
+        47586, 47585, 47604, 47603,
+        47588, 47587, 47606, 47605,
+        47582, 47581, 47600, 47599,
+        47684, 47583, 47601, 47602,
+        47577, 47576, 47596, 47595,
+        47580, 47579, 47598, 47597
+    }
+    
+    for _, itemId in ipairs(boelistOrder) do
+        local itemData = boelist[itemId]
+        if itemData then
+            local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
+            
+            -- Print both prices with colored labels
+            print(string.format("%s |cffffd700Cost:|r %s  |cff00ff00Non-profit:|r %s", 
+                itemLink, 
+                GetCoinTextureString(itemData.cost),
+                GetCoinTextureString(itemData.nonprofit)
+            ))
+        else
+            print(string.format("|cffff0000Item not found in boelist:|r %d", itemId))
+        end
+    end
+end
