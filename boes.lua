@@ -1,6 +1,6 @@
 boelist = {
     ["Titanium Spikeguards"] = {cost = 2887, nonprofit = 3038.9474},
-    ["Titanium Razorplate"] = {cost = 4219, nonprofit = 4441.0526315789475},
+    ["Titanium Razorplate"] = {cost = 4219, nonprofit = 4441.0526},
     ["Saronite Swordbreakers"] = {cost = 2906, nonprofit = 3058.947368421053},
     ["Breastplate of the White Knight"] = {cost = 4970, nonprofit = 5231.578947368422},
     ["Sunforged Bracers"] = {cost = 3200, nonprofit = 3368.421052631579},
