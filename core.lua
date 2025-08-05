@@ -17,5 +17,5 @@ end
 
 SLASH_BOELIST1 = "/boelist"
 SlashCmdList["BOELIST"] = function()
-    showBoelist
+    showBoelist()
 end
