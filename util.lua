@@ -67,11 +67,26 @@ function ShowBoelist()
         47598, 47597    -- Ensorcelled Nerubian Breastplate
     }
     
-    local order264 = {
-        49907, 49906, 49903, 49904, 49905, 49902,
-        49899, 49984, 49901, 49896, 49895, 49898,
-        49900, 49897, 49890, 49891, 49892, 49893
-    }
+    local order245 = {
+        49907, -- Boots of Kingly Upheaval
+        49906, -- Hellfrozen Bonegrinders
+        49903, -- Legplates of Painful Death
+        49904, -- Pillars of Might
+        49905, -- Protectors of Life
+        49902, -- Puresteel Legplates
+        49899, -- Bladeborn Leggings
+        49894, -- Blessed Cenarion Boots
+        49901, -- Draconic Bonesplinter Legguards
+        49896, -- Earthsoul Boots
+        49895, -- Footpads of Impending Death
+        49898, -- Legwraps of Unleashed Nature
+        49900, -- Lightning-Infused Leggings
+        49897, -- Rock-Steady Treads
+        49890, -- Deathfrost Boots
+        49891, -- Leggings of Woven Death
+        49892, -- Lightweave Leggings
+        49893, -- Sandals of Consecration
+}
     
     -- Get player faction (returns "Alliance" or "Horde" in 3.3.5)
     local faction = UnitFactionGroup("player")
