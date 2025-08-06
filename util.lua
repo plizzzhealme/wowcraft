@@ -67,7 +67,7 @@ function ShowBoelist()
         47598, 47597    -- Ensorcelled Nerubian Breastplate
     }
     
-    local order245 = {
+    local order264 = {
         49907, -- Boots of Kingly Upheaval
         49906, -- Hellfrozen Bonegrinders
         49903, -- Legplates of Painful Death
