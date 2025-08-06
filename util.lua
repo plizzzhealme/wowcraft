@@ -68,9 +68,9 @@ function ShowBoelist()
     }
     
     local order264 = {
-        70568, 70566, 70565, 70567, 70563, 70562,
-        70556, 70555, 70560, 70559, 70557, 70554,
-        70558, 70561, 70551, 70550, 70552, 70553
+        49907, 49906, 49903, 49904, 49905, 49902,
+        49899, 49984, 49901, 49896, 49895, 49898,
+        49900, 49897, 49890, 49891, 49892, 49893
     }
     
     local playerFaction = UnitFactionGroup("player")
@@ -80,13 +80,9 @@ function ShowBoelist()
         local allianceItemId = order245[i+1]
         local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
         local itemData = BOES[itemId]
+        local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        if itemData then
-            local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-            
-            print(string.format("%s COST [%s] NON-PROFIT [%s]", itemLink, GetMoneyString(itemData.cost), GetMoneyString(itemData.nonprofit)))
-            anyItemsShown = true
-        end
+        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
     end
     
     for _, itemId in ipairs(order264) do
@@ -99,9 +95,9 @@ end
 
 local function AddNonProfitPriceToTooltip(tooltip, itemID)
     local itemInfo = BOES[itemID]
-    if itemInfo and itemInfo.nonprofit then
+    if itemInfo and itemInfo.cost then
         -- Format the price with commas for readability
-        local formattedPrice = GetCoinTextureString(itemInfo.nonprofit)
+        local formattedPrice = GetCoinTextureString(itemInfo.cost / .95)
         tooltip:AddLine("Nonprofit Price: "..formattedPrice, 1, 1, 1)
         tooltip:Show()
     end
