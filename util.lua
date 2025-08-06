@@ -83,3 +83,24 @@ function ShowBoelist()
         end
     end
 end
+
+local function AddNonProfitPriceToTooltip(tooltip, itemID)
+    local itemInfo = BOES[itemID]
+    if itemInfo and itemInfo.nonprofit then
+        -- Format the price with commas for readability
+        local formattedPrice = GetCoinTextureString(itemInfo.nonprofit)
+        tooltip:AddLine("Nonprofit Price: "..formattedPrice, 1, 1, 1)
+        tooltip:Show()
+    end
+end
+
+-- Hook the tooltip
+GameTooltip:HookScript("OnTooltipSetItem", function(tooltip)
+    local _, itemLink = tooltip:GetItem()
+    if itemLink then
+        local itemID = GetItemInfoInstant(itemLink)
+        if itemID then
+            AddNonProfitPriceToTooltip(tooltip, itemID)
+        end
+    end
+end)
