@@ -73,15 +73,25 @@ function ShowBoelist()
         49900, 49897, 49890, 49891, 49892, 49893
     }
     
-    local playerFaction = UnitFactionGroup("player")
+    -- Get player faction (returns "Alliance" or "Horde" in 3.3.5)
+    local faction = UnitFactionGroup("player")
+
+    -- Determine the starting index and step based on faction
+    local startIndex, step
     
-    for i = 1, #order245, 2 do
-        local hordeItemId = order245[i]
-        local allianceItemId = order245[i+1]
-        local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
+    if faction == "Horde" then
+        startIndex = 1
+        step = 2
+    else -- Alliance
+        startIndex = 2
+        step = 2
+    end
+
+    -- Iterate through the array for the player's faction
+    for i = startIndex, #order245, step do
+        local itemId = order245[i]
         local itemData = BOES[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-        
         print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
     end
     
