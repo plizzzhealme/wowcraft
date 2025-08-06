@@ -98,7 +98,8 @@ end
 GameTooltip:HookScript("OnTooltipSetItem", function(tooltip)
     local _, itemLink = tooltip:GetItem()
     if itemLink then
-        local itemID = GetItemInfoInstant(itemLink)
+        -- This works in Wrath Classic
+        local itemID = tonumber(string.match(itemLink, "item:(%d+)"))
         if itemID then
             AddNonProfitPriceToTooltip(tooltip, itemID)
         end
