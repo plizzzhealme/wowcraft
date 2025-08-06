@@ -46,7 +46,7 @@ function ShowBuylist()
 end
 
 function ShowBoelist()
-    local boelistOrder = {
+    local order245 = {
         47573, 47572,  -- [1] Horde, [2] Alliance
         47590, 47589,  -- [3] Horde, [4] Alliance
         47571, 47570,  -- [5] Horde, [6] Alliance
@@ -67,11 +67,17 @@ function ShowBoelist()
         47598, 47597   -- [35] Horde, [36] Alliance
     }
     
+    local order264 = {
+        70568, 70566, 70565, 70567, 70563, 70562,
+        70556, 70555, 70560, 70559, 70557, 70554,
+        70558, 70561, 70551, 70550, 70552, 70553
+    }
+    
     local playerFaction = UnitFactionGroup("player")
     
-    for i = 1, #boelistOrder, 2 do
-        local hordeItemId = boelistOrder[i]
-        local allianceItemId = boelistOrder[i+1]
+    for i = 1, #order245, 2 do
+        local hordeItemId = order245[i]
+        local allianceItemId = order245[i+1]
         local itemId = (playerFaction == "Horde") and hordeItemId or allianceItemId
         local itemData = BOES[itemId]
         
@@ -81,6 +87,13 @@ function ShowBoelist()
             print(string.format("%s COST [%s] NON-PROFIT [%s]", itemLink, GetMoneyString(itemData.cost), GetMoneyString(itemData.nonprofit)))
             anyItemsShown = true
         end
+    end
+    
+    for _, itemId in ipairs(order264) do
+        local itemData = BOES[itemId]
+        local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
+        
+        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
     end
 end
 
