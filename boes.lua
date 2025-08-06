@@ -42,7 +42,7 @@ BOES = {
     [49905] = {name = "Protectors of Life", cost = 39530000},
     [49902] = {name = "Puresteel Legplates", cost = 64140000},
     [49899] = {name = "Bladeborn Leggings", cost = 48100000},
-    [49984] = {name = "Blessed Cenarion Boots", cost = 29900000},
+    [49894] = {name = "Blessed Cenarion Boots", cost = 29900000},
     [49901] = {name = "Draconic Bonesplinter Legguards", cost = 45520000},
     [49896] = {name = "Earthsoul Boots", cost = 29800000},
     [49895] = {name = "Footpads of Impending Death", cost = 35060000},
