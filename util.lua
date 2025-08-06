@@ -47,24 +47,24 @@ end
 
 function ShowBoelist()
     local order245 = {
-        47573, 47572,  -- [1] Horde, [2] Alliance
-        47590, 47589,  -- [3] Horde, [4] Alliance
-        47571, 47570,  -- [5] Horde, [6] Alliance
-        47592, 47591,  -- [7] Horde, [8] Alliance
-        47575, 47574,  -- [9] Horde, [10] Alliance
-        47594, 47593,  -- [11] Horde, [12] Alliance
-        47586, 47585,  -- [13] Horde, [14] Alliance
-        47604, 47603,  -- [15] Horde, [16] Alliance
-        47588, 47587,  -- [17] Horde, [18] Alliance
-        47606, 47605,  -- [19] Horde, [20] Alliance
-        47582, 47581,  -- [21] Horde, [22] Alliance
-        47600, 47599,  -- [23] Horde, [24] Alliance
-        47684, 47583,  -- [25] Horde, [26] Alliance
-        47601, 47602,  -- [27] Horde, [28] Alliance
-        47577, 47576,  -- [29] Horde, [30] Alliance
-        47596, 47595,  -- [31] Horde, [32] Alliance
-        47580, 47579,  -- [33] Horde, [34] Alliance
-        47598, 47597   -- [35] Horde, [36] Alliance
+        47573, 47572,   -- Titanium Spikeguards
+        47590, 47589,   -- Titanium Razorplate
+        47571, 47570,   -- Saronite Swordbreakers
+        47592, 47591,   -- Breastplate of the White Knight
+        47575, 47574,   -- Sunforged Bracers
+        47594, 47593,   -- Sunforged Breastplate
+        47586, 47585,   -- Bejeweled Wizard's Bracers
+        47604, 47603,   -- Merlin's Robe
+        47588, 47587,   -- Royal Moonshroud Bracers
+        47606, 47605,   -- Royal Moonshroud Robe
+        47582, 47581,   -- Bracers of Swift Death
+        47600, 47599,   -- Knightbane Carapace
+        47584, 47583,   -- Moonshadow Armguards
+        47601, 47602,   -- Lunar Eclipse Robes
+        47577, 47576,   -- Crusader's Dragonscale Bracers
+        47596, 47595,   -- Crusader's Dragonscale Breastplate
+        47580, 47579,   -- Black Chitin Bracers
+        47598, 47597    -- Ensorcelled Nerubian Breastplate
     }
     
     local order264 = {
