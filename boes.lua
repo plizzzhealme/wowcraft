@@ -23,7 +23,7 @@ BOES = {
     [47581] = {name = "Bracers of Swift Death (Alliance)", cost = 25540000, nonprofit = 26890000},
     [47600] = {name = "Knightbane Carapace (Horde)", cost = 40068000, nonprofit = 42180000},
     [47599] = {name = "Knightbane Carapace (Alliance)", cost = 40068000, nonprofit = 42180000},
-    [47684] = {name = "Moonshadow Armguards (Horde)", cost = 25000000, nonprofit = 26320000},
+    [47584] = {name = "Moonshadow Armguards (Horde)", cost = 25000000, nonprofit = 26320000},
     [47583] = {name = "Moonshadow Armguards (Alliance)", cost = 25000000, nonprofit = 26320000},
     [47601] = {name = "Lunar Eclipse Robes (Horde)", cost = 39168000, nonprofit = 41230000},
     [47602] = {name = "Lunar Eclipse Robes (Alliance)", cost = 39168000, nonprofit = 41230000},
