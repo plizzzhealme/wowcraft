@@ -6,10 +6,9 @@ function BuyBid(msg)
     end
 
     local overbidProtection = tonumber(msg) or BID_FACTOR
-    print (overbidProtection)
     
     for i = 1, GetNumAuctionItems("list") do
-        local name, texture, count, quality, canUse, level, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, owner, sold = GetAuctionItemInfo("list", i)
+        local name, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
         local itemLink = GetAuctionItemLink("list", i)
         local itemId = itemLink and itemLink:match("item:(%d+):") or nil
         
@@ -36,8 +35,8 @@ function BuyBid(msg)
             else
                 if (bidCost <= item.cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
-                    print(string.format("BIDDING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
+                    print(string.format("BIDDING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                 end
             end
         end

@@ -1,31 +1,31 @@
 function GetMoneyString(money)
-	local gold = floor(money / 10000)
-	local silver = floor((money - gold * 10000) / 100)
-	local copper = mod(money, 100)
-	if gold > 0 then
-		return format(GOLD_AMOUNT_TEXTURE.." "..SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, gold, 0, 0, silver, 0, 0, copper, 0, 0)
-	elseif silver > 0 then
-		return format(SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, silver, 0, 0, copper, 0, 0)
-	else
-		return format(COPPER_AMOUNT_TEXTURE, copper, 0, 0)
-	end
+    local gold = floor(money / 10000)
+    local silver = floor((money - gold * 10000) / 100)
+    local copper = mod(money, 100)
+    if gold > 0 then
+        return format(GOLD_AMOUNT_TEXTURE.." "..SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, gold, 0, 0, silver, 0, 0, copper, 0, 0)
+    elseif silver > 0 then
+        return format(SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, silver, 0, 0, copper, 0, 0)
+    else
+        return format(COPPER_AMOUNT_TEXTURE, copper, 0, 0)
+    end
 end
 
 function GetMoneyStringPlain(money)
-	local gold = floor(money / 10000)
-	local silver = floor((money - gold * 10000) / 100)
-	local copper = mod(money, 100)
-	if gold > 0 then
-		return gold..GOLD_AMOUNT_SYMBOL.." "..silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
-	elseif silver > 0 then
-		return silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
-	else
-		return copper..COPPER_AMOUNT_SYMBOL
-	end
+    local gold = floor(money / 10000)
+    local silver = floor((money - gold * 10000) / 100)
+    local copper = mod(money, 100)
+    if gold > 0 then
+        return gold..GOLD_AMOUNT_SYMBOL.." "..silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
+    elseif silver > 0 then
+        return silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
+    else
+        return copper..COPPER_AMOUNT_SYMBOL
+    end
 end
 
 function ShowBuylist()
-	local buylistOrder = {
+    local buylistOrder = {
     36860, 35627, 35625, 35624, 35623, 35622, 
     37701, 37705, 37702, 37703, 37704, 37700,
     41163, 36910, 36913, 36912, 37663, 33470,
@@ -46,7 +46,7 @@ function ShowBuylist()
 end
 
 function ShowBoelist()
-	local boelistOrder = {
+    local boelistOrder = {
         47573, 47572,  -- [1] Horde, [2] Alliance
         47590, 47589,  -- [3] Horde, [4] Alliance
         47571, 47570,  -- [5] Horde, [6] Alliance
