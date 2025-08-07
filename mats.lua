@@ -48,5 +48,5 @@ MATS = {
     [47556] = {name = "Crusader Orb", cost = 1830000},
     [43102] = {name = "Frozen Orb", cost = 550000},
     [45087] = {name = "Runed Orb", cost = 2200000},
-    [49908] = {name = "Primordial Saronite", cost = 3450000},
+    [49908] = {name = "Primordial Saronite", cost = 3500000},
 }
