@@ -29,7 +29,7 @@ MATS = {
     [34057] = {name = "Abyss Crystal", cost = 465000},
     [34055] = {name = "Greater Cosmic Essence", cost = 110000},
     [36908] = {name = "Frost Lotus", cost = 350000},
-    [33567] = {name = "Borean Leather Scraps", cost = 5467},
+    [33567] = {name = "Borean Leather Scraps", cost = 5466},
     [33568] = {name = "Borean Leather", cost = 27333},
     [38425] = {name = "Heavy Borean Leather", cost = 164000},
     [44128] = {name = "Arctic Fur", cost = 1640000},
