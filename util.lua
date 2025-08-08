@@ -119,7 +119,7 @@ function ShowBoelist()
 end
 
 local function AddNonProfitPriceToTooltip(tooltip, itemID)
-    local itemInfo = BOES[itemID]
+    local itemInfo = BOES[itemID] or MATS[itemID]
     if itemInfo and itemInfo.cost then
         -- Format the price with commas for readability
         local formattedPrice = GetCoinTextureString(itemInfo.cost / .95)
