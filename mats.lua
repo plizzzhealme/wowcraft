@@ -33,7 +33,7 @@ MATS = {
     [33568] = {name = "Borean Leather", cost = 27333},
     [38425] = {name = "Heavy Borean Leather", cost = 164000},
     [44128] = {name = "Arctic Fur", cost = 1640000},
-    [38557] = {name = "Icy Dragonscale", cost = 130000},
+    [38557] = {name = "Icy Dragonscale", cost = 135000},
     [38558] = {name = "Nerubian Chitin", cost = 25000},
     [36919] = {name = "Cardinal Ruby", cost = 1650000},
     [36934] = {name = "Eye of Zul", cost = 550000},
