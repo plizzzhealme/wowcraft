@@ -242,7 +242,7 @@ BOES = {
         [35627] = 16,  -- Eternal Shadow
         [49908] = 8    -- Primordial Saronite
     },
-    [49984] = { -- Blessed Cenarion Boots
+    [49894] = { -- Blessed Cenarion Boots
         [38561] = 12,  -- Jormungar Scale (placeholder)
         [44128] = 5,   -- Arctic Fur
         [35625] = 10,  -- Eternal Life

@@ -31,7 +31,7 @@ function ShowBuylist()
     41163, 36910, 36913, 36912, 37663, 33470,
     41510, 41511, 41595, 41593, 41594, 42253,
     34052, 34053, 34054, 34057, 34055, 36908,
-    33567, 33568, 38425, 44128, 38557, 38558,
+    33567, 33568, 38425, 44128, 38557, 38558, 38561,
     36919, 36934, 36925, 36922, 36924, 36784,
     41355, 41245, 38426, 40533, 47556, 43102,
     45087, 49908
@@ -104,13 +104,11 @@ function ShowBoelist()
     -- Iterate through the array for the player's faction
     for i = startIndex, #order245, step do
         local itemId = order245[i]
-        local itemData = BOES[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
     end
     
     for _, itemId in ipairs(order264) do
-        local itemData = BOES[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
         print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
@@ -131,7 +129,6 @@ function GetCost(id)
         end
         return cost
     end
-    
     return 0
 end
 
