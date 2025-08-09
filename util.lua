@@ -131,8 +131,11 @@ end
 local function AddNonProfitPriceToTooltip(tooltip, itemId)
     if BOES[itemId] or MATS[itemId] then
         -- Format the price with commas for readability
-        local formattedPrice = GetCoinTextureString(math.ceil(GetCost(itemId) / .95))
-        tooltip:AddLine("Nonprofit Price: "..formattedPrice, 1, 1, 1)
+        local cost = GetCost(itemId)
+        local formattedCost = GetCoinTextureString(math.ceil(cost))
+        local formattedPrice = GetCoinTextureString(math.ceil(cost / .95))
+        tooltip:AddLine("COST: "..formattedCost, 1, 1, 1)
+        tooltip:AddLine("NONPROFIT: "..formattedPrice, 1, 1, 1)
         tooltip:Show()
     end
 end
