@@ -1,52 +1,52 @@
 MATS = {
-    [36860] = {name = "Eternal Fire", cost = 410000},
-    [35627] = {name = "Eternal Shadow", cost = 415000},
-    [35625] = {name = "Eternal Life", cost = 370000},
-    [35624] = {name = "Eternal Earth", cost = 160000},
-    [35623] = {name = "Eternal Air", cost = 300000},
-    [35622] = {name = "Eternal Water", cost = 155000},
-    [37702] = {name = "Crystallized Fire", cost = 41000},
-    [37703] = {name = "Crystallized Shadow", cost = 41500},
-    [37704] = {name = "Crystallized Life", cost = 37000},
-    [37701] = {name = "Crystallized Earth", cost = 16000},
-    [37700] = {name = "Crystallized Air", cost = 30000},
-    [37705] = {name = "Crystallized Water", cost = 15500},
-    [41163] = {name = "Titanium Bar", cost = 520000},
-    [36910] = {name = "Titanium Ore", cost = 260000},
-    [36913] = {name = "Saronite Bar", cost = 75000},
-    [36912] = {name = "Saronite Ore", cost = 37500},
-    [37663] = {name = "Titansteel Bar", cost = 2545000},
-    [33470] = {name = "Frostweave Cloth", cost = 10000},
-    [41510] = {name = "Bolt of Frostweave", cost = 50000},
-    [41511] = {name = "Bolt of Imbued Frostweave", cost = 210000},
-    [41595] = {name = "Spellweave", cost = 515000},
-    [41593] = {name = "Ebonweave", cost = 520000},
-    [41594] = {name = "Moonshroud", cost = 475000},
-    [42253] = {name = "Iceweb Spider Silk", cost = 15000},
-    [34052] = {name = "Dream Shard", cost = 300000},
-    [34053] = {name = "Small Dream Shard", cost = 100000},
-    [34054] = {name = "Infinite Dust", cost = 55000},
-    [34057] = {name = "Abyss Crystal", cost = 465000},
-    [34055] = {name = "Greater Cosmic Essence", cost = 110000},
-    [36908] = {name = "Frost Lotus", cost = 350000},
-    [33567] = {name = "Borean Leather Scraps", cost = 5466},
-    [33568] = {name = "Borean Leather", cost = 27333},
-    [38425] = {name = "Heavy Borean Leather", cost = 164000},
-    [44128] = {name = "Arctic Fur", cost = 1640000},
-    [38557] = {name = "Icy Dragonscale", cost = 135000},
-    [38558] = {name = "Nerubian Chitin", cost = 25000},
-    [36919] = {name = "Cardinal Ruby", cost = 1650000},
-    [36934] = {name = "Eye of Zul", cost = 550000},
-    [36925] = {name = "Majestic Zircon", cost = 900000},
-    [36922] = {name = "King's Amber", cost = 1350000},
-    [36924] = {name = "Sky Sapphire", cost = 35000},
-    [36784] = {name = "Siren's Tear", cost = 200000},
-    [41355] = {name = "Vengeance Bindings", cost = 1310000},
-    [41245] = {name = "Deadly Saronite Dirk", cost = 585000},
-    [38426] = {name = "Eternium Thread", cost = 24000},
-    [40533] = {name = "Walnut Stock", cost = 50000},
-    [47556] = {name = "Crusader Orb", cost = 1830000},
-    [43102] = {name = "Frozen Orb", cost = 550000},
-    [45087] = {name = "Runed Orb", cost = 2200000},
-    [49908] = {name = "Primordial Saronite", cost = 3500000},
+    [36860] = 410000,  --Eternal Fire
+    [35627] = 415000,  --Eternal Shadow
+    [35625] = 370000,  --Eternal Life
+    [35624] = 160000,  --Eternal Earth
+    [35623] = 300000,  --Eternal Air
+    [35622] = 155000,  --Eternal Water
+    [37702] = 41000,  --Crystallized Fire
+    [37703] = 41500,  --Crystallized Shadow
+    [37704] = 37000,  --Crystallized Life
+    [37701] = 16000,  --Crystallized Earth
+    [37700] = 30000,  --Crystallized Air
+    [37705] = 15500,  --Crystallized Water
+    [41163] = 520000,  --Titanium Bar
+    [36910] = 260000,  --Titanium Ore
+    [36913] = 75000,  --Saronite Bar
+    [36912] = 37500,  --Saronite Ore
+    [37663] = 2545000,  --Titansteel Bar
+    [33470] = 10000,  --Frostweave Cloth
+    [41510] = 50000,  --Bolt of Frostweave
+    [41511] = 210000,  --Bolt of Imbued Frostweave
+    [41595] = 515000,  --Spellweave
+    [41593] = 520000,  --Ebonweave
+    [41594] = 475000,  --Moonshroud
+    [42253] = 15000,  --Iceweb Spider Silk
+    [34052] = 300000,  --Dream Shard
+    [34053] = 100000,  --Small Dream Shard
+    [34054] = 55000,  --Infinite Dust
+    [34057] = 465000,  --Abyss Crystal
+    [34055] = 110000,  --Greater Cosmic Essence
+    [36908] = 350000,  --Frost Lotus
+    [33567] = 5466,  --Borean Leather Scraps
+    [33568] = 27333,  --Borean Leather
+    [38425] = 164000,  --Heavy Borean Leather
+    [44128] = 1640000,  --Arctic Fur
+    [38557] = 135000,  --Icy Dragonscale
+    [38558] = 25000,  --Nerubian Chitin
+    [36919] = 1650000,  --Cardinal Ruby
+    [36934] = 550000,  --Eye of Zul
+    [36925] = 900000,  --Majestic Zircon
+    [36922] = 1350000,  --King's Amber
+    [36924] = 35000,  --Sky Sapphire
+    [36784] = 200000,  --Siren's Tear
+    [41355] = 1310000,  --Vengeance Bindings
+    [41245] = 585000,  --Deadly Saronite Dirk
+    [38426] = 24000,  --Eternium Thread
+    [40533] = 50000,  --Walnut Stock
+    [47556] = 1830000,  --Crusader Orb
+    [43102] = 550000,  --Frozen Orb
+    [45087] = 2200000,  --Runed Orb
+    [49908] = 3500000,  --Primordial Saronite
 }
