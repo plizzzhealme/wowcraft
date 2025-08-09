@@ -17,7 +17,7 @@ function BuyBid(msg)
         end
         
         if MATS[itemId] ~= nil or BOES[itemId] ~= nil then
-            local cost = GetCost(id)
+            local cost = GetCost(itemId)
             local buyoutCost = buyoutPrice / count
             local nextBid = math.max(minBid, bidAmount) + minIncrement
             local bidCost = nextBid / count
