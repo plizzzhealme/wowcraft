@@ -38,10 +38,9 @@ function ShowBuylist()
     }
     
     for _, itemId in ipairs(buylistOrder) do
-        local itemData = MATS[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
+        print(string.format("%s [%s]", itemLink, GetMoneyString(MATS[itemId])))
     end
 end
 
@@ -107,22 +106,39 @@ function ShowBoelist()
         local itemId = order245[i]
         local itemData = BOES[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
+        print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
     end
     
     for _, itemId in ipairs(order264) do
         local itemData = BOES[itemId]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s [%s]", itemLink, GetMoneyString(itemData.cost)))
+        print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
     end
 end
 
-local function AddNonProfitPriceToTooltip(tooltip, itemID)
-    local itemInfo = BOES[itemID] or MATS[itemID]
-    if itemInfo and itemInfo.cost then
+function GetCost(id)
+    if MATS[id] ~= nil then
+        return MATS[id]
+    end
+        
+    if BOES[id] ~= nil then
+        local cost = 0
+        local boe = BOES[id]
+        
+        for matId, quantity in pairs(boe) do
+            cost = cost + MATS[matId] * quantity
+        end
+        return cost
+    end
+    
+    return 0
+end
+
+local function AddNonProfitPriceToTooltip(tooltip, itemId)
+    if BOES[itemId] or MATS[itemId] then
         -- Format the price with commas for readability
-        local formattedPrice = GetCoinTextureString(math.ceil(itemInfo.cost / .95))
+        local formattedPrice = GetCoinTextureString(math.ceil(GetCost(itemId) / .95))
         tooltip:AddLine("Nonprofit Price: "..formattedPrice, 1, 1, 1)
         tooltip:Show()
     end
