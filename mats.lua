@@ -35,6 +35,7 @@ MATS = {
     [44128] = 1640000,  --Arctic Fur
     [38557] = 135000,  --Icy Dragonscale
     [38558] = 25000,  --Nerubian Chitin
+    [38561] = 50000,  --Jormungar Scale
     [36919] = 1650000,  --Cardinal Ruby
     [36934] = 550000,  --Eye of Zul
     [36925] = 900000,  --Majestic Zircon
