@@ -151,3 +151,80 @@ GameTooltip:HookScript("OnTooltipSetItem", function(tooltip)
         end
     end
 end)
+
+function ScanProfessionRecipes()
+    -- Check if profession window is open
+    if not TradeSkillFrame or not TradeSkillFrame:IsVisible() then
+        print("Profession window not open!")
+        return
+    end
+    
+    -- Initialize saved variables if they don't exist
+    if not ProfessionRecipeDB then
+        ProfessionRecipeDB = {}
+    end
+    
+    -- Get profession name
+    local professionName = GetTradeSkillLine()
+    
+    -- Initialize profession table if it doesn't exist
+    if not ProfessionRecipeDB[professionName] then
+        ProfessionRecipeDB[professionName] = {}
+    end
+    
+    -- Get number of recipes
+    local numSkills = GetNumTradeSkills()
+    
+    -- Scan through all recipes
+    for i = 1, numSkills do
+        local skillName, skillType = GetTradeSkillInfo(i)
+        
+        -- Only process recipes (skip headers)
+        if skillType ~= "header" then
+            local itemLink = GetTradeSkillItemLink(i)
+            if itemLink then
+                local itemID = itemLink:match("item:(%d+)")
+                if itemID then
+                    itemID = tonumber(itemID)
+                    
+                    -- Initialize recipe table if it doesn't exist
+                    if not ProfessionRecipeDB[professionName][itemID] then
+                        ProfessionRecipeDB[professionName][itemID] = {}
+                        
+                        -- Get recipe name for comment
+                        local _, _, _, _, _, _, _, _, _, texture = GetItemInfo(itemID)
+                        ProfessionRecipeDB[professionName][itemID].name = skillName
+                        ProfessionRecipeDB[professionName][itemID].texture = texture
+                        
+                        -- Get reagents
+                        local numReagents = GetTradeSkillNumReagents(i)
+                        for j = 1, numReagents do
+                            local reagentName, reagentTexture, reagentCount = GetTradeSkillReagentInfo(i, j)
+                            local reagentLink = GetTradeSkillReagentItemLink(i, j)
+                            if reagentLink then
+                                local reagentID = reagentLink:match("item:(%d+)")
+                                if reagentID then
+                                    reagentID = tonumber(reagentID)
+                                    ProfessionRecipeDB[professionName][itemID][reagentID] = reagentCount
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    
+    print("Profession recipes scanned for "..professionName.." ("..numSkills.." recipes processed)")
+    
+    -- Save to saved variables
+    ProfessionRecipeDB.lastScan = time()
+end
+
+-- Slash command to run the scanner
+SLASH_SCANPROF1 = "/scanprof"
+SlashCmdList["SCANPROF"] = function()
+    ScanProfessionRecipes()
+end
+
+print("Profession Recipe Scanner loaded. Type /scanprof with profession window open to scan recipes.")
