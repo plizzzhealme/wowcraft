@@ -1,6 +1,7 @@
 ## Interface: 30300
 ## Title: Wowcraft
 ## Version: 1.0
+## SavedVariables: ProfessionRecipeDB
 
 mats.lua
 boes.lua
