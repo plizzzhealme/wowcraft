@@ -129,7 +129,7 @@ function GetCost(id)
 end
 
 local function AddNonProfitPriceToTooltip(tooltip, itemId)
-    if BOES[itemId] or MATS[itemId] then
+   -- if BOES[itemId] or MATS[itemId] then
         local cost = GetCost(itemId)
         local formattedCost = GetCoinTextureString(math.ceil(cost))
         local formattedPrice = GetCoinTextureString(math.ceil(cost / .95))
@@ -137,7 +137,7 @@ local function AddNonProfitPriceToTooltip(tooltip, itemId)
         tooltip:AddLine("COST: "..formattedCost, 1, 1, 1)
         tooltip:AddLine("NONPROFIT: "..formattedPrice, 1, 1, 1)
         tooltip:Show()
-    end
+   -- end
 end
 
 -- Hook the tooltip
