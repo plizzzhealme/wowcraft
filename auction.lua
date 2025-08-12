@@ -43,6 +43,9 @@ function BuyBid(msg)
     end
 end
 
+local searchString = nil
+local searchPage = 1
+
 function SearchAndBid(name)
     if not searhString then
         searhString = name
