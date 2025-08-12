@@ -4,35 +4,36 @@ local function getBidAmount(i, overbidProtection)
     local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
     local itemLink = GetAuctionItemLink("list", i)
     local itemId = tonumber(itemLink:match("item:(%d+):"))
+    
     local itemCost = GetCost(itemId)
     local nextBid = math.max(minBid, bidAmount) + minIncrement
-    local bidCost = nextBid / count
+    local nextBidCost = nextBid / count
     
-    --stop if over buylist price
-    if bidCost > itemCost then
-        return 0
+    if nextBidCost > itemCost then
+        return
     end
     
     local buyoutCost = buyoutPrice / count
     
-    --instant buyout if possible
     if 0 < buyoutCost and buyoutCost <= itemCost  then
         return buyoutPrice
     end
     
-    --skip auctions we have bids on
     if highestBidder then
-        return 0
+        return
     end
     
-    local safeBid = math.max(nextBid, count * itemCost / overbidProtection)
+    local safeBid = count * itemCost / overbidProtection
     
     if buyoutPrice == 0 then
-        return safeBid
+        return math.max(safeBid, nextBid)
     end
     
-    safeBid = math.min(safeBid, buyoutPrice / BID_FACTOR)
-    return math.max(safeBid, nextBid)
+    return math.max(math.min(safeBid, buyoutPrice / BID_FACTOR), nextBid)
+end
+
+local function isItemFromList(itemId)
+    return MATS[itemId] ~= nil or BOES[itemId] ~= nil
 end
 
 function BuyBid(msg)
@@ -41,44 +42,20 @@ function BuyBid(msg)
     end
 
     local overbidProtection = tonumber(msg) or BID_FACTOR
+    local numAuctionItems = GetNumAuctionItems("list")
     
-    for i = 1, GetNumAuctionItems("list") do
-        local name, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
+    for i = 1, numAuctionItems do
         local itemLink = GetAuctionItemLink("list", i)
-        local itemId = itemLink and itemLink:match("item:(%d+):") or nil
+        local itemId = tonumber(itemLink:match("item:(%d+):"))
         
-        local testBid = getBidAmount(i, overbidProtection)
-        
-        if testBid > 0 then
-            print(GetMoneyString(testBid))
-        end
-        
-        if itemId then
-            itemId = tonumber(itemId)
-        end
-        
-        if MATS[itemId] ~= nil or BOES[itemId] ~= nil then
-            local cost = GetCost(itemId)
-            local buyoutCost = buyoutPrice / count
-            local nextBid = math.max(minBid, bidAmount) + minIncrement
-            local bidCost = nextBid / count
-            local maxPrice = cost * count
-            local safeBid = maxPrice / overbidProtection
-            local minPrice = safeBid
+        if isItemFromList(itemId) then
+            local amountToBid = getBidAmount(i, overbidProtection)
             
-            if buyoutPrice > 0 then
-                minPrice = math.min(minPrice, buyoutPrice / BID_FACTOR)
-            end
-            
-            if buyoutCost <= cost and buyoutPrice > 0 then
-                PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
-                print(string.format("BUYING %s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
-            else
-                if (bidCost <= cost) and (not highestBidder) then
-                    local amountToBid = math.max(minPrice, nextBid)
-                    PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
-                    print(string.format("BIDDING %s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
-                end
+            if amountToBid then
+                PlaceAuctionBid("list", i, amountToBid)
+                
+                local _, _, count, _, _, _, _, _, _, _, _, _, _ = GetAuctionItemInfo("list", i)
+                print(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
             end
         end
     end
