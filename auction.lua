@@ -1,4 +1,5 @@
-local BID_FACTOR = 1.05
+AH_CUT_MULTIPLIER = 0.95
+BID_INCREMENT_MULTIPLIER = 1.05
 
 local function getBidAmount(i, overbidProtection)
     local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
@@ -29,7 +30,7 @@ local function getBidAmount(i, overbidProtection)
         return math.max(safeBid, nextBid)
     end
     
-    return math.max(math.min(safeBid, buyoutPrice / BID_FACTOR), nextBid)
+    return math.max(math.min(safeBid, buyoutPrice / BID_INCREMENT_MULTIPLIER), nextBid)
 end
 
 local function isItemFromList(itemId)
@@ -41,7 +42,7 @@ function BuyBid(msg)
         return
     end
 
-    local overbidProtection = tonumber(msg) or BID_FACTOR
+    local overbidProtection = tonumber(msg) or BID_INCREMENT_MULTIPLIER
     local numAuctionItems = GetNumAuctionItems("list")
     
     for i = 1, numAuctionItems do

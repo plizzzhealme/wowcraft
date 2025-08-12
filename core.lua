@@ -1,4 +1,4 @@
-local addonName, addon = {}
+--local addonName, addon = {}
 
 SLASH_BUYBID1 = "/buybid"
 SlashCmdList["BUYBID"] = function(msg)
