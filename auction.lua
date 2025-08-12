@@ -37,7 +37,7 @@ local function isItemFromList(itemId)
     return MATS[itemId] ~= nil or BOES[itemId] ~= nil
 end
 
-function BuyBid(msg)
+function Purchase(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
     end

@@ -2,7 +2,7 @@
 
 SLASH_BUYBID1 = "/buybid"
 SlashCmdList["BUYBID"] = function(msg)
-    BuyBid(msg)
+    Purchase(msg)
 end
 
 SLASH_BUYLIST1 = "/buylist"

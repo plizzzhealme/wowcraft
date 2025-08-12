@@ -85,19 +85,14 @@ function ShowBoelist()
     
     -- Get player faction (returns "Alliance" or "Horde" in 3.3.5)
     local faction = UnitFactionGroup("player")
-
-    -- Determine the starting index and step based on faction
-    local startIndex, step
+    local startIndex, step = 2
     
     if faction == "Horde" then
         startIndex = 1
-        step = 2
-    else -- Alliance
+    else
         startIndex = 2
-        step = 2
     end
-
-    -- Iterate through the array for the player's faction
+    
     for i = startIndex, #order245, step do
         local itemId = order245[i]
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
@@ -106,7 +101,6 @@ function ShowBoelist()
     
     for _, itemId in ipairs(order264) do
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-        
         print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
     end
 end
@@ -123,29 +117,29 @@ function GetCost(id)
         for matId, quantity in pairs(boe) do
             cost = cost + MATS[matId] * quantity
         end
+        
         return cost
     end
+    
     return 0
 end
 
 local function AddNonProfitPriceToTooltip(tooltip, itemId)
-   -- if BOES[itemId] or MATS[itemId] then
-        local cost = GetCost(itemId)
-        local formattedCost = GetCoinTextureString(cost)
-        local formattedPrice = GetCoinTextureString(cost / AH_CUT_MULTIPLIER)
-        tooltip:AddLine("ID: "..itemId, 1, 1, 1)
-        tooltip:AddLine("COST: "..formattedCost, 1, 1, 1)
-        tooltip:AddLine("NONPROFIT: "..formattedPrice, 1, 1, 1)
-        tooltip:Show()
-   -- end
+    local cost = GetCost(itemId)
+    local formattedCost = GetCoinTextureString(cost)
+    local formattedPrice = GetCoinTextureString(cost / AH_CUT_MULTIPLIER)
+    tooltip:AddLine("ID: "..itemId, 1, 1, 1)
+    tooltip:AddLine("COST: "..formattedCost, 1, 1, 1)
+    tooltip:AddLine("NONPROFIT: "..formattedPrice, 1, 1, 1)
+    tooltip:Show()
 end
 
--- Hook the tooltip
 GameTooltip:HookScript("OnTooltipSetItem", function(tooltip)
     local _, itemLink = tooltip:GetItem()
+    
     if itemLink then
-        -- This works in Wrath Classic
         local itemID = tonumber(string.match(itemLink, "item:(%d+)"))
+        
         if itemID then
             AddNonProfitPriceToTooltip(tooltip, itemID)
         end
