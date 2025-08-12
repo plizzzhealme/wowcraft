@@ -48,9 +48,9 @@ function BuyBid(msg)
         
         local testBid = getBidAmount(i, overbidProtection)
         
-        if testBid > 0 then
+        --if testBid > 0 then
             print(GetMoneyString(testBid))
-        end
+       -- end
         
         if itemId then
             itemId = tonumber(itemId)
