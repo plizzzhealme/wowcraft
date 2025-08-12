@@ -43,14 +43,19 @@ function BuyBid(msg)
     end
 end
 
--- Create a frame to handle events
-local eventFrame = CreateFrame("Frame")
-eventFrame:RegisterEvent("AUCTION_ITEM_LIST_UPDATE")
+local frame = CreateFrame("Frame")
+local delay = 0
+frame:RegisterEvent("AUCTION_ITEM_LIST_UPDATE")
 
--- Event handler function
-eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if event == "AUCTION_ITEM_LIST_UPDATE" then
-        -- Your function goes here
-        BuyBid(1.025)
+frame:SetScript("OnEvent", function()
+    delay = 0.1 -- Start a 0.1 sec delay
+end)
+
+frame:SetScript("OnUpdate", function(self, elapsed)
+    if delay > 0 then
+        delay = delay - elapsed
+        if delay <= 0 then
+            BuyBid(1.025)
+        end
     end
 end)
