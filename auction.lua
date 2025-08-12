@@ -42,3 +42,34 @@ function BuyBid(msg)
         end
     end
 end
+
+function SearchAndBid(name)
+    if not searhString then
+        searhString = name
+    end
+    QueryAuctionItems(searhString, 0, 0, 0, 0, 0, searchPage, false, 0, false)
+    BuyBid(1.025)
+    searchPage = searchPage + 1
+end
+
+function Reset()
+    searhString = nil
+    searchPage = 1
+end
+
+SLASH_SEARCHANDBID1 = "/searchandbid"
+SLASH_SEARCHANDBID2 = "/sab"  -- Optional shorter alias
+SlashCmdList["SEARCHANDBID"] = function(msg)
+    if msg and msg ~= "" then
+        SearchAndBid(msg)
+    else
+        print("Usage: /searchandbid [item name] or /sab [item name]")
+    end
+end
+
+SLASH_RESETSEARCH1 = "/resetsearch"
+SLASH_RESETSEARCH2 = "/rs"  -- Optional shorter alias
+SlashCmdList["RESETSEARCH"] = function()
+    Reset()
+    print("Auction search has been reset.")
+end
