@@ -1,5 +1,39 @@
 local BID_FACTOR = 1.05
 
+local function getBidAmount(i, overbidProtection)
+    local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
+    local itemLink = GetAuctionItemLink("list", i)
+    local itemId = itemLink and itemLink:match("item:(%d+):") or nil
+    local itemCost = GetCost(itemId)
+    local nextBid = math.max(minBid, bidAmount) + minIncrement
+    local bidCost = nextBid / count
+    
+    --stop if over buylist price
+    if bidCost > itemCost then
+        return 0
+    end
+    
+    local buyoutCost = buyoutPrice / count
+    
+    --instant buyout if possible
+    if buyoutCost <= itemCost then
+        return buyoutPrice
+    end
+    
+    --skip auctions we have bids on
+    if highestBidder then
+        return 0
+    end
+    
+    local safeBid = math.max(nextBid, count * itemCost / overbidProtection)
+    
+    if not buyoutPrice then
+        return safeBid
+    end
+    
+    return math.min(safeBid, buyoutPrice / BID_FACTOR)
+end
+
 function BuyBid(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
@@ -49,36 +83,4 @@ function BuyBid(msg)
     end
 end
 
-local function getBidAmount(i, overbidProtection)
-    local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
-    local itemLink = GetAuctionItemLink("list", i)
-    local itemId = itemLink and itemLink:match("item:(%d+):") or nil
-    local itemCost = GetCost(itemId)
-    local nextBid = math.max(minBid, bidAmount) + minIncrement
-    local bidCost = nextBid / count
-    
-    --stop if over buylist price
-    if bidCost > itemCost then
-        return 0
-    end
-    
-    local buyoutCost = buyoutPrice / count
-    
-    --instant buyout if possible
-    if buyoutCost <= itemCost then
-        return buyoutPrice
-    end
-    
-    --skip auctions we have bids on
-    if highestBidder then
-        return 0
-    end
-    
-    local safeBid = math.max(nextBid, count * itemCost / overbidProtection)
-    
-    if not buyoutPrice then
-        return safeBid
-    end
-    
-    return math.min(safeBid, buyoutPrice / BID_FACTOR)
-end
+
