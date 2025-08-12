@@ -16,7 +16,7 @@ local function getBidAmount(i, overbidProtection)
     local buyoutCost = buyoutPrice / count
     
     --instant buyout if possible
-    if buyoutCost <= itemCost then
+    if 0 < buyoutCost and buyoutCost <= itemCost  then
         return buyoutPrice
     end
     
@@ -27,7 +27,7 @@ local function getBidAmount(i, overbidProtection)
     
     local safeBid = math.max(nextBid, count * itemCost / overbidProtection)
     
-    if not buyoutPrice then
+    if buyoutPrice == 0 then
         return safeBid
     end
     
