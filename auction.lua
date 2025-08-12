@@ -31,31 +31,14 @@ function BuyBid(msg)
             
             if buyoutCost <= cost and buyoutPrice > 0 then
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
-                print(string.format("BUYING %s: [%d] x [%s] TOTAL [%s]",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
+                print(string.format("BUYING %s: [%d] x [%s] = [%s]",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
             else
                 if (bidCost <= cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
                     PlaceAuctionBid("list", i, math.min(amountToBid, maxPrice))
-                    print(string.format("BIDDING %s: [%d] x [%s] TOTAL [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
+                    print(string.format("BIDDING %s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid/count), GetMoneyString(amountToBid)))
                 end
             end
         end
     end
 end
-
-local frame = CreateFrame("Frame")
-local delay = 0
-frame:RegisterEvent("AUCTION_ITEM_LIST_UPDATE")
-
-frame:SetScript("OnEvent", function()
-    delay = 0.1 -- Start a 0.1 sec delay
-end)
-
-frame:SetScript("OnUpdate", function(self, elapsed)
-    if delay > 0 then
-        delay = delay - elapsed
-        if delay <= 0 then
-            BuyBid(1.025)
-        end
-    end
-end)
