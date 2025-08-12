@@ -57,6 +57,10 @@ function SearchAndBid(name)
         BuyBid(1.025)
         searchPage = searchPage + 1
     end
+    
+    if GetNumAuctionItems("list") < 50 then
+            searchPage = 1
+    end
 end
 
 function Reset()
