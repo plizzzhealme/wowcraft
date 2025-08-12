@@ -43,44 +43,14 @@ function BuyBid(msg)
     end
 end
 
-local searchString = nil
-local searchPage = 1
+-- Create a frame to handle events
+local eventFrame = CreateFrame("Frame")
+eventFrame:RegisterEvent("AUCTION_ITEM_LIST_UPDATE")
 
-function SearchAndBid(name)
-    if not searhString then
-        searhString = name
-    end
-    
-    local canQuery, _ = CanSendAuctionQuery("list")
-    if canQuery then
-        QueryAuctionItems(searhString, 0, 0, 0, 0, 0, searchPage, false, 0, false)
+-- Event handler function
+eventFrame:SetScript("OnEvent", function(self, event, ...)
+    if event == "AUCTION_ITEM_LIST_UPDATE" then
+        -- Your function goes here
         BuyBid(1.025)
-        searchPage = searchPage + 1
     end
-    
-    if GetNumAuctionItems("list") < 50 then
-            searchPage = 1
-    end
-end
-
-function Reset()
-    searhString = nil
-    searchPage = 1
-end
-
-SLASH_SEARCHANDBID1 = "/searchandbid"
-SLASH_SEARCHANDBID2 = "/sab"  -- Optional shorter alias
-SlashCmdList["SEARCHANDBID"] = function(msg)
-    if msg and msg ~= "" then
-        SearchAndBid(msg)
-    else
-        print("Usage: /searchandbid [item name] or /sab [item name]")
-    end
-end
-
-SLASH_RESETSEARCH1 = "/resetsearch"
-SLASH_RESETSEARCH2 = "/rs"  -- Optional shorter alias
-SlashCmdList["RESETSEARCH"] = function()
-    Reset()
-    print("Auction search has been reset.")
-end
+end)
