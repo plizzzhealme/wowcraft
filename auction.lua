@@ -50,9 +50,13 @@ function SearchAndBid(name)
     if not searhString then
         searhString = name
     end
-    QueryAuctionItems(searhString, 0, 0, 0, 0, 0, searchPage, false, 0, false)
-    BuyBid(1.025)
-    searchPage = searchPage + 1
+    
+    local canQuery, _ = CanSendAuctionQuery("list")
+    if canQuery then
+        QueryAuctionItems(searhString, 0, 0, 0, 0, 0, searchPage, false, 0, false)
+        BuyBid(1.025)
+        searchPage = searchPage + 1
+    end
 end
 
 function Reset()
