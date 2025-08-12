@@ -14,7 +14,7 @@ function BuyBid(msg)
         
         local testBid = getBidAmount(i, overbidProtection)
         
-        if testBid then
+        if testBid > 0 then
             print(GetMoneyString(testBid))
         end
         
@@ -59,7 +59,7 @@ local function getBidAmount(i, overbidProtection)
     
     --stop if over buylist price
     if bidCost > itemCost then
-        return
+        return 0
     end
     
     local buyoutCost = buyoutPrice / count
@@ -71,7 +71,7 @@ local function getBidAmount(i, overbidProtection)
     
     --skip auctions we have bids on
     if highestBidder then
-        return
+        return 0
     end
     
     local safeBid = math.max(nextBid, count * itemCost / overbidProtection)
