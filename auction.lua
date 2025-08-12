@@ -4,9 +4,13 @@ local function getBidAmount(i, overbidProtection)
     local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
     local itemLink = GetAuctionItemLink("list", i)
     local itemId = itemLink and itemLink:match("item:(%d+):") or nil
+    print(itemId)
     local itemCost = GetCost(itemId)
+    print(itemCost)
     local nextBid = math.max(minBid, bidAmount) + minIncrement
+    print(nextBid)
     local bidCost = nextBid / count
+    print(BidCost)
     
     --stop if over buylist price
     if bidCost > itemCost then
