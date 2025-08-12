@@ -3,14 +3,10 @@ local BID_FACTOR = 1.05
 local function getBidAmount(i, overbidProtection)
     local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
     local itemLink = GetAuctionItemLink("list", i)
-    local itemId = itemLink and itemLink:match("item:(%d+):") or nil
-    print(itemId)
+    local itemId = tonumber(itemLink:match("item:(%d+):"))
     local itemCost = GetCost(itemId)
-    print(itemCost)
     local nextBid = math.max(minBid, bidAmount) + minIncrement
-    print(nextBid)
     local bidCost = nextBid / count
-    print(BidCost)
     
     --stop if over buylist price
     if bidCost > itemCost then
@@ -35,7 +31,8 @@ local function getBidAmount(i, overbidProtection)
         return safeBid
     end
     
-    return math.min(safeBid, buyoutPrice / BID_FACTOR)
+    safeBid = math.min(safeBid, buyoutPrice / BID_FACTOR)
+    return math.max(safeBid, nextBid)
 end
 
 function BuyBid(msg)
@@ -52,9 +49,9 @@ function BuyBid(msg)
         
         local testBid = getBidAmount(i, overbidProtection)
         
-        --if testBid > 0 then
+        if testBid > 0 then
             print(GetMoneyString(testBid))
-       -- end
+        end
         
         if itemId then
             itemId = tonumber(itemId)
@@ -75,7 +72,7 @@ function BuyBid(msg)
             
             if buyoutCost <= cost and buyoutPrice > 0 then
                 PlaceAuctionBid("list", i, math.min(buyoutPrice, maxPrice))
-                print(string.format("BUYING %s: [%d] x [%s] = [%s]",itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
+                print(string.format("BUYING %s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
             else
                 if (bidCost <= cost) and (not highestBidder) then
                     local amountToBid = math.max(minPrice, nextBid)
