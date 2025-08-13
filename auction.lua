@@ -1,6 +1,34 @@
 AH_CUT_MULTIPLIER = 0.95
 BID_INCREMENT_MULTIPLIER = 1.05
 
+local Queue = {
+    data = {},
+    head = 1,
+    tail = 1,
+    maxSize = 50
+}
+
+function Queue:Push(item)
+    if (self.tail - self.head) >= self.maxSize then
+        table.remove(self.data, 1)  -- Remove oldest if full
+        self.head = self.head + 1
+    end
+    self.data[self.tail] = item
+    self.tail = self.tail + 1
+end
+
+function Queue:Pop()
+    if self.head >= self.tail then return nil end
+    local item = self.data[self.head]
+    self.data[self.head] = nil
+    self.head = self.head + 1
+    return item
+end
+
+function Queue:Size()
+    return self.tail - self.head
+end
+
 local function getBidAmount(i, overbidProtection)
     local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
     local itemLink = GetAuctionItemLink("list", i)
@@ -56,10 +84,19 @@ function Purchase(msg)
                 PlaceAuctionBid("list", i, amountToBid)
                 
                 local _, _, count, _, _, _, _, _, _, _, _, _, _ = GetAuctionItemInfo("list", i)
-                print(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                --print(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                Queue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
             end
         end
     end
 end
 
+local frame = CreateFrame("FRAME")
+frame:RegisterEvent("CHAT_MSG_SYSTEM")
+frame:SetScript("OnEvent", function(self, event, message)
+    if string.find(message, "Bid accepted.") then
+        -- Your code goes here
+        print(Queue:Pop())
+    end
+end)
 
