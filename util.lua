@@ -85,7 +85,8 @@ function ShowBoelist()
     
     -- Get player faction (returns "Alliance" or "Horde" in 3.3.5)
     local faction = UnitFactionGroup("player")
-    local startIndex, step = 2
+    local startIndex = 1
+    local step = 2
     
     if faction == "Horde" then
         startIndex = 1
