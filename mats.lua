@@ -46,7 +46,6 @@ MATS = {
     [41355] = 1310000,  --Vengeance Bindings
     [41245] = 585000,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
-    [40533] = 50000,  --Walnut Stock
     [47556] = 1870000,  --Crusader Orb
     [43102] = 562500,  --Frozen Orb
     [45087] = 2250000,  --Runed Orb
