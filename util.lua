@@ -131,7 +131,7 @@ local function AddNonProfitPriceToTooltip(tooltip, itemId)
     local formattedCost = GetCoinTextureString(cost)
     local formattedPrice = GetCoinTextureString(cost / AH_CUT_MULTIPLIER)
     
-    if BOES[itemID] ~nil then
+    if BOES[itemID] ~= nil then
         formattedPrice = GetCoinTextureString(math.ceil(cost / AH_CUT_MULTIPLIER))
     end
     
