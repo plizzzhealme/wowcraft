@@ -62,7 +62,15 @@ local function getBidAmount(i, overbidProtection)
 end
 
 local function isItemFromList(itemId)
-    return MATS[itemId] ~= nil or BOES[itemId] ~= nil
+    return isBoe(itemId) or isMat(itemId)
+end
+
+local function isBoe(itemId)
+    return BOES[itemId] ~= nil
+end
+    
+local function isMat(itemId)
+    return MATS[itemId] ~= nil
 end
 
 function Purchase(msg)
@@ -89,6 +97,50 @@ function Purchase(msg)
             end
         end
     end
+end
+
+local DURATION = 3  -- 3 = 48 hours (0:12h, 1:24h, 2:48h, 3:48h in 3.3.5a)
+
+-- Function to post BoE items from bags
+function PostAllBoEItems()
+    -- Iterate through all bags (0-4, where 0 is backpack)
+    for bag = 0, 4 do
+        local numSlots = GetContainerNumSlots(bag)
+        
+        for slot = 1, numSlots do
+            local itemLink = GetContainerItemLink(bag, slot)
+            
+            if itemLink then
+                local itemId = GetItemInfoFromHyperlink(itemLink)
+                
+                -- Check if item is BoE
+                if isBoe(itemId) then
+                    local price = GetCost(itemId) / AH_CUT_MULTIPLIER
+                    PickupContainerItem(bag, slot)
+                    ClickAuctionSellItemButton()
+                    ClearCursor()
+                    StartAuction(price, price, DURATION, 1, 1)
+                end
+            end
+        end
+    end
+end
+
+-- Helper function to extract item ID from hyperlink
+function GetItemInfoFromHyperlink(hyperlink)
+    if not hyperlink then return nil end
+    local _, _, itemString = string.find(hyperlink, "|H(.+)|h%[.+%]")
+    if itemString then
+        local _, itemId = strsplit(":", itemString)
+        return tonumber(itemId)
+    end
+    return nil
+end
+
+-- Slash command to run the function
+SLASH_POSTBOE1 = "/postboe"
+SlashCmdList["POSTBOE"] = function()
+    PostAllBoEItems()
 end
 
 local frame = CreateFrame("FRAME")
