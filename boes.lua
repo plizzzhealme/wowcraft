@@ -388,5 +388,181 @@ BOE_200 = {
         [36860] = 2,   -- Eternal Fire
         [35622] = 2,   -- Eternal Water
         [43102] = 1    -- Frozen Orb
+    },
+    [42101] = { -- Ebonweave Robe
+        [41593] = 8,   -- Ebonweave
+        [41511] = 6,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [42100] = { -- Moonshroud Robe
+        [41594] = 8,   -- Moonshroud
+        [41511] = 6,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [42102] = { -- Spellweave Robe
+        [41595] = 8,   -- Spellweave
+        [41511] = 6,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [42111] = { -- Ebonweave Gloves
+        [41593] = 4,   -- Ebonweave
+        [41511] = 4,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [42103] = { -- Moonshroud Gloves
+        [41594] = 4,   -- Moonshroud
+        [41511] = 4,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [42113] = { -- Spellweave Gloves
+        [41595] = 4,   -- Spellweave
+        [41511] = 4,   -- Bolt of Imbued Frostweave
+        [38426] = 1,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
+    [41610] = { -- Deathchill Cloak
+        [41511] = 5,   -- Bolt of Imbued Frostweave
+        [36860] = 6,   -- Eternal Fire
+        [35627] = 4,   -- Eternal Shadow
+        [36784] = 1,   -- Siren's Tear
+        [43102] = 1    -- Frozen Orb
+    },
+    [41609] = { -- Wispcloak
+        [41511] = 5,   -- Bolt of Imbued Frostweave
+        [35625] = 6,   -- Eternal Life
+        [35622] = 4,   -- Eternal Water
+        [36784] = 1,   -- Siren's Tear
+        [43102] = 1    -- Frozen Orb
+    },
+    [43565] = { -- Durable Nerubhide Cape
+        [44128] = 2,   -- Arctic Fur
+        [38558] = 40,  -- Nerubian Chitin
+        [43102] = 1    -- Frozen Orb
+    },
+    [43566] = { -- Ice Striker's Cloak
+        [44128] = 2,   -- Arctic Fur
+        [36860] = 6,   -- Eternal Fire
+        [35627] = 4,   -- Eternal Shadow
+        [43102] = 1    -- Frozen Orb
+    },
+    [43502] = { -- Earthgiving Boots
+        [38425] = 10,  -- Heavy Borean Leather
+        [35625] = 5,   -- Eternal Life
+        [35622] = 5,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43495] = { -- Earthgiving Legguards
+        [38425] = 12,  -- Heavy Borean Leather
+        [35625] = 6,   -- Eternal Life
+        [35622] = 6,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43484] = { -- Trollwoven Girdle
+        [38425] = 10,  -- Heavy Borean Leather
+        [36860] = 5,   -- Eternal Fire
+        [35627] = 5,   -- Eternal Shadow
+        [43102] = 1    -- Frozen Orb
+    },
+    [43481] = { -- Trollwoven Spaulders
+        [38425] = 10,  -- Heavy Borean Leather
+        [36860] = 6,   -- Eternal Fire
+        [35627] = 6,   -- Eternal Shadow
+        [43102] = 1    -- Frozen Orb
+    },
+    [44930] = { -- Windripper Boots
+        [38425] = 10,  -- Heavy Borean Leather
+        [35623] = 5,   -- Eternal Air
+        [35622] = 5,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [44931] = { -- Windripper Leggings
+        [38425] = 12,  -- Heavy Borean Leather
+        [35623] = 6,   -- Eternal Air
+        [35622] = 6,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43459] = { -- Giantmaim Bracers
+        [38425] = 10,  -- Heavy Borean Leather
+        [35622] = 5,   -- Eternal Water
+        [35623] = 5,   -- Eternal Air
+        [43102] = 1    -- Frozen Orb
+    },
+    [43458] = { -- Giantmaim Legguards
+        [38425] = 12,  -- Heavy Borean Leather
+        [35622] = 6,   -- Eternal Water
+        [35623] = 6,   -- Eternal Air
+        [43102] = 1    -- Frozen Orb
+    },
+    [43461] = { -- Revenant's Breastplate
+        [38425] = 12,  -- Heavy Borean Leather
+        [35622] = 12,  -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43469] = { -- Revenant's Treads
+        [38425] = 10,  -- Heavy Borean Leather
+        [35622] = 10,  -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43590] = { -- Polar Vest
+        [38425] = 10,  -- Heavy Borean Leather
+        [36860] = 3,   -- Eternal Fire
+        [35622] = 3,   -- Eternal Water
+        [38558] = 8,   -- Nerubian Chitin
+        [43102] = 1    -- Frozen Orb
+    },
+    [43592] = { -- Polar Boots
+        [38425] = 8,   -- Heavy Borean Leather
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [38558] = 4,   -- Nerubian Chitin
+        [43102] = 1    -- Frozen Orb
+    },
+    [43591] = { -- Polar Cord
+        [38425] = 8,   -- Heavy Borean Leather
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [38558] = 4,   -- Nerubian Chitin
+        [43102] = 1    -- Frozen Orb
+    },
+    [43593] = { -- Icy Scale Chestguard
+        [38425] = 10,  -- Heavy Borean Leather
+        [36860] = 3,   -- Eternal Fire
+        [35622] = 3,   -- Eternal Water
+        [38557] = 8,   -- Icy Dragonscale
+        [43102] = 1    -- Frozen Orb
+    },
+    [43594] = { -- Icy Scale Boots
+        [38425] = 8,   -- Heavy Borean Leather
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [38557] = 4,   -- Icy Dragonscale
+        [43102] = 1    -- Frozen Orb
+    },
+    [43595] = { -- Icy Scale Belt
+        [38425] = 8,   -- Heavy Borean Leather
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [38557] = 4,   -- Icy Dragonscale
+        [43102] = 1    -- Frozen Orb
+    },
+    [44963] = { -- Earthen Leg Armor
+        [44128] = 2,   -- Arctic Fur
+        [35624] = 4,   -- Eternal Earth
+        [43102] = 1    -- Frozen Orb
+    },
+    [38373] = { -- Frosthide Leg Armor
+        [44128] = 2,   -- Arctic Fur
+        [38558] = 2,   -- Nerubian Chitin
+        [43102] = 1    -- Frozen Orb
+    },
+    [38374] = { -- Icescale Leg Armor
+        [44128] = 2,   -- Arctic Fur
+        [38557] = 2,   -- Icy Dragonscale
+        [43102] = 1    -- Frozen Orb
     }
 }
