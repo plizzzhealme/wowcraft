@@ -95,7 +95,6 @@ local frame = CreateFrame("FRAME")
 frame:RegisterEvent("CHAT_MSG_SYSTEM")
 frame:SetScript("OnEvent", function(self, event, message)
     if string.find(message, "Bid accepted.") then
-        -- Your code goes here
         print(Queue:Pop())
     end
 end)
