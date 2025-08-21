@@ -61,16 +61,16 @@ local function getBidAmount(i, overbidProtection)
     return math.max(math.min(safeBid, buyoutPrice / BID_INCREMENT_MULTIPLIER), nextBid)
 end
 
-local function isItemFromList(itemId)
-    return isBoe(itemId) or isMat(itemId)
-end
-
 local function isBoe(itemId)
     return BOES[itemId] ~= nil
 end
     
 local function isMat(itemId)
     return MATS[itemId] ~= nil
+end
+
+local function isItemFromList(itemId)
+    return isBoe(itemId) or isMat(itemId)
 end
 
 function Purchase(msg)
