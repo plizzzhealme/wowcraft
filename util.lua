@@ -118,7 +118,7 @@ function ShowBuylist()
     for _, itemId in ipairs(buylistOrder) do
         local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
         
-        print(string.format("%s [%s]", itemLink, GetMoneyString(MATS[itemId])))
+        print(string.format("%s [%s]", itemLink, GetMoneyString(MAT[itemId])))
     end
 end
 
