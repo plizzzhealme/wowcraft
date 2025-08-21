@@ -40,14 +40,14 @@ local function getBidAmount(i, overbidProtection)
     local nextBid = math.max(minBid, bidAmount) + minIncrement
     local nextBidCost = nextBid / count
     
-    if nextBidCost > itemCost then
-        return
-    end
-    
     local buyoutCost = buyoutPrice / count
     
     if 0 < buyoutCost and buyoutCost <= itemCost  then
         return buyoutPrice
+    end
+    
+    if nextBidCost > itemCost then
+        return
     end
     
     if highestBidder then
