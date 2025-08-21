@@ -92,7 +92,7 @@ function Purchase(msg)
                 PlaceAuctionBid("list", i, amountToBid)
                 
                 local _, _, count, _, _, _, _, _, _, _, _, _, _ = GetAuctionItemInfo("list", i)
-                --print(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                
                 Queue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
             end
         end
