@@ -1,210 +1,4 @@
-BOES = {
-    [47573] = { -- Titanium Spikeguards (Horde)
-        [37663] = 8,   -- Titansteel Bar
-        [41355] = 1,   -- Vengeance Bindings
-        [47556] = 4    -- Crusader Orb
-    },
-    [47572] = { -- Titanium Spikeguards (Alliance)
-        [37663] = 8,   -- Titansteel Bar
-        [41355] = 1,   -- Vengeance Bindings
-        [47556] = 4    -- Crusader Orb
-    },
-    [47590] = { -- Titanium Razorplate (Horde)
-        [37663] = 10,  -- Titansteel Bar
-        [41245] = 4,   -- Deadly Saronite Dirk
-        [47556] = 8    -- Crusader Orb
-    },
-    [47589] = { -- Titanium Razorplate (Alliance)
-        [37663] = 10,  -- Titansteel Bar
-        [41245] = 4,   -- Deadly Saronite Dirk
-        [47556] = 8    -- Crusader Orb
-    },
-    [47571] = { -- Saronite Swordbreakers (Horde)
-        [37663] = 8,   -- Titansteel Bar
-        [36913] = 20,  -- Saronite Bar
-        [47556] = 4    -- Crusader Orb
-    },
-    [47570] = { -- Saronite Swordbreakers (Alliance)
-        [37663] = 8,   -- Titansteel Bar
-        [36913] = 20,  -- Saronite Bar
-        [47556] = 4    -- Crusader Orb
-    },
-    [47592] = { -- Breastplate of the White Knight (Horde)
-        [37663] = 12,  -- Titansteel Bar
-        [35625] = 8,   -- Eternal Life
-        [36925] = 2,   -- Majestic Zircon
-        [47556] = 8    -- Crusader Orb
-    },
-    [47591] = { -- Breastplate of the White Knight (Alliance)
-        [37663] = 12,  -- Titansteel Bar
-        [35625] = 8,   -- Eternal Life
-        [36925] = 2,   -- Majestic Zircon
-        [47556] = 8    -- Crusader Orb
-    },
-    [47575] = { -- Sunforged Bracers (Horde)
-        [37663] = 8,   -- Titansteel Bar
-        [35625] = 12,  -- Eternal Life
-        [47556] = 4    -- Crusader Orb
-    },
-    [47574] = { -- Sunforged Bracers (Alliance)
-        [37663] = 8,   -- Titansteel Bar
-        [35625] = 12,  -- Eternal Life
-        [47556] = 4    -- Crusader Orb
-    },
-    [47594] = { -- Sunforged Breastplate (Horde)
-        [37663] = 10,  -- Titansteel Bar
-        [35625] = 20,  -- Eternal Life
-        [47556] = 8    -- Crusader Orb
-    },
-    [47593] = { -- Sunforged Breastplate (Alliance)
-        [37663] = 10,  -- Titansteel Bar
-        [35625] = 20,  -- Eternal Life
-        [47556] = 8    -- Crusader Orb
-    },
-    [47586] = { -- Bejeweled Wizard's Bracers (Horde)
-        [41595] = 8,   -- Spellweave
-        [36934] = 1,   -- Eye of Zul
-        [36919] = 1,   -- Cardinal Ruby
-        [36925] = 1,   -- Majestic Zircon
-        [47556] = 4    -- Crusader Orb
-    },
-    [47585] = { -- Bejeweled Wizard's Bracers (Alliance)
-        [41595] = 8,   -- Spellweave
-        [36934] = 1,   -- Eye of Zul
-        [36919] = 1,   -- Cardinal Ruby
-        [36925] = 1,   -- Majestic Zircon
-        [47556] = 4    -- Crusader Orb
-    },
-    [47604] = { -- Merlin's Robe (Horde)
-        [41593] = 8,   -- Ebonweave
-        [41595] = 8,   -- Spellweave
-        [34052] = 8,   -- Dream Shard
-        [47556] = 8    -- Crusader Orb
-    },
-    [47603] = { -- Merlin's Robe (Alliance)
-        [41593] = 8,   -- Ebonweave
-        [41595] = 8,   -- Spellweave
-        [34052] = 8,   -- Dream Shard
-        [47556] = 8    -- Crusader Orb
-    },
-    [47588] = { -- Royal Moonshroud Bracers (Horde)
-        [41594] = 12,  -- Moonshroud
-        [47556] = 4    -- Crusader Orb
-    },
-    [47587] = { -- Royal Moonshroud Bracers (Alliance)
-        [41594] = 12,  -- Moonshroud
-        [47556] = 4    -- Crusader Orb
-    },
-    [47606] = { -- Royal Moonshroud Robe (Horde)
-        [41594] = 20,  -- Moonshroud
-        [36922] = 2,   -- King's Amber
-        [47556] = 8    -- Crusader Orb
-    },
-    [47605] = { -- Royal Moonshroud Robe (Alliance)
-        [41594] = 20,  -- Moonshroud
-        [36922] = 2,   -- King's Amber
-        [47556] = 8    -- Crusader Orb
-    },
-    [47582] = { -- Bracers of Swift Death (Horde)
-        [38425] = 20,  -- Heavy Borean Leather
-        [35627] = 12,  -- Eternal Shadow
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47581] = { -- Bracers of Swift Death (Alliance)
-        [38425] = 20,  -- Heavy Borean Leather
-        [35627] = 12,  -- Eternal Shadow
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47600] = { -- Knightbane Carapace (Horde)
-        [38425] = 24,  -- Heavy Borean Leather
-        [35627] = 20,  -- Eternal Shadow
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47599] = { -- Knightbane Carapace (Alliance)
-        [38425] = 24,  -- Heavy Borean Leather
-        [35627] = 20,  -- Eternal Shadow
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47584] = { -- Moonshadow Armguards (Horde)
-        [38425] = 20,  -- Heavy Borean Leather
-        [35625] = 12,  -- Eternal Life
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47583] = { -- Moonshadow Armguards (Alliance)
-        [38425] = 20,  -- Heavy Borean Leather
-        [35625] = 12,  -- Eternal Life
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47601] = { -- Lunar Eclipse Robes (Horde)
-        [38425] = 24,  -- Heavy Borean Leather
-        [35625] = 20,  -- Eternal Life
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47602] = { -- Lunar Eclipse Robes (Alliance)
-        [38425] = 24,  -- Heavy Borean Leather
-        [35625] = 20,  -- Eternal Life
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47577] = { -- Crusader's Dragonscale Bracers (Horde)
-        [38557] = 40,  -- Icy Dragonscale
-        [35622] = 8,   -- Eternal Water
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47576] = { -- Crusader's Dragonscale Bracers (Alliance)
-        [38557] = 40,  -- Icy Dragonscale
-        [35622] = 8,   -- Eternal Water
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47596] = { -- Crusader's Dragonscale Breastplate (Horde)
-        [38557] = 40,  -- Icy Dragonscale
-        [35622] = 8,   -- Eternal Water
-        [35625] = 8,   -- Eternal Life
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47595] = { -- Crusader's Dragonscale Breastplate (Alliance)
-        [38557] = 40,  -- Icy Dragonscale
-        [35622] = 8,   -- Eternal Water
-        [35625] = 8,   -- Eternal Life
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47580] = { -- Black Chitin Bracers (Horde)
-        [38558] = 40,  -- Nerubian Chitin
-        [34057] = 4,   -- Abyss Crystal
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47579] = { -- Black Chitin Bracers (Alliance)
-        [38558] = 40,  -- Nerubian Chitin
-        [34057] = 4,   -- Abyss Crystal
-        [44128] = 6,   -- Arctic Fur
-        [47556] = 4    -- Crusader Orb
-    },
-    [47598] = { -- Ensorcelled Nerubian Breastplate (Horde)
-        [38558] = 40,  -- Nerubian Chitin
-        [35623] = 8,   -- Eternal Air
-        [34055] = 8,   -- Greater Cosmic Essence
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
-    [47597] = { -- Ensorcelled Nerubian Breastplate (Alliance)
-        [38558] = 40,  -- Nerubian Chitin
-        [35623] = 8,   -- Eternal Air
-        [34055] = 8,   -- Greater Cosmic Essence
-        [44128] = 8,   -- Arctic Fur
-        [47556] = 8    -- Crusader Orb
-    },
+BOE_264 = {
     [49907] = { -- Boots of Kingly Upheaval
         [37663] = 8,   -- Titansteel Bar
         [35624] = 12,  -- Eternal Earth
@@ -301,5 +95,298 @@ BOES = {
     [49893] = { -- Sandals of Consecration
         [41594] = 10,  -- Moonshroud
         [49908] = 5    -- Primordial Saronite
+    }
+}
+
+BOE_245_HORDE = {
+    [47573] = { -- Titanium Spikeguards
+        [37663] = 8,   -- Titansteel Bar
+        [41355] = 1,   -- Vengeance Bindings
+        [47556] = 4    -- Crusader Orb
+    },
+    [47590] = { -- Titanium Razorplate
+        [37663] = 10,  -- Titansteel Bar
+        [41245] = 4,   -- Deadly Saronite Dirk
+        [47556] = 8    -- Crusader Orb
+    },
+    [47571] = { -- Saronite Swordbreakers
+        [37663] = 8,   -- Titansteel Bar
+        [36913] = 20,  -- Saronite Bar
+        [47556] = 4    -- Crusader Orb
+    },
+    [47592] = { -- Breastplate of the White Knight
+        [37663] = 12,  -- Titansteel Bar
+        [35625] = 8,   -- Eternal Life
+        [36925] = 2,   -- Majestic Zircon
+        [47556] = 8    -- Crusader Orb
+    },
+    [47575] = { -- Sunforged Bracers
+        [37663] = 8,   -- Titansteel Bar
+        [35625] = 12,  -- Eternal Life
+        [47556] = 4    -- Crusader Orb
+    },
+    [47594] = { -- Sunforged Breastplate
+        [37663] = 10,  -- Titansteel Bar
+        [35625] = 20,  -- Eternal Life
+        [47556] = 8    -- Crusader Orb
+    },
+    [47586] = { -- Bejeweled Wizard's Bracers
+        [41595] = 8,   -- Spellweave
+        [36934] = 1,   -- Eye of Zul
+        [36919] = 1,   -- Cardinal Ruby
+        [36925] = 1,   -- Majestic Zircon
+        [47556] = 4    -- Crusader Orb
+    },
+    [47604] = { -- Merlin's Robe
+        [41593] = 8,   -- Ebonweave
+        [41595] = 8,   -- Spellweave
+        [34052] = 8,   -- Dream Shard
+        [47556] = 8    -- Crusader Orb
+    },
+    [47588] = { -- Royal Moonshroud Bracers
+        [41594] = 12,  -- Moonshroud
+        [47556] = 4    -- Crusader Orb
+    },
+    [47606] = { -- Royal Moonshroud Robe
+        [41594] = 20,  -- Moonshroud
+        [36922] = 2,   -- King's Amber
+        [47556] = 8    -- Crusader Orb
+    },
+    [47582] = { -- Bracers of Swift Death
+        [38425] = 20,  -- Heavy Borean Leather
+        [35627] = 12,  -- Eternal Shadow
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47600] = { -- Knightbane Carapace
+        [38425] = 24,  -- Heavy Borean Leather
+        [35627] = 20,  -- Eternal Shadow
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47584] = { -- Moonshadow Armguards
+        [38425] = 20,  -- Heavy Borean Leather
+        [35625] = 12,  -- Eternal Life
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47601] = { -- Lunar Eclipse Robes
+        [38425] = 24,  -- Heavy Borean Leather
+        [35625] = 20,  -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47577] = { -- Crusader's Dragonscale Bracers
+        [38557] = 40,  -- Icy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47596] = { -- Crusader's Dragonscale Breastplate
+        [38557] = 40,  -- Icy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [35625] = 8,   -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47580] = { -- Black Chitin Bracers
+        [38558] = 40,  -- Nerubian Chitin
+        [34057] = 4,   -- Abyss Crystal
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47598] = { -- Ensorcelled Nerubian Breastplate
+        [38558] = 40,  -- Nerubian Chitin
+        [35623] = 8,   -- Eternal Air
+        [34055] = 8,   -- Greater Cosmic Essence
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    }
+}
+
+BOE_245_ALLIANCE = {
+    [47572] = { -- Titanium Spikeguards
+        [37663] = 8,   -- Titansteel Bar
+        [41355] = 1,   -- Vengeance Bindings
+        [47556] = 4    -- Crusader Orb
+    },
+    [47589] = { -- Titanium Razorplate
+        [37663] = 10,  -- Titansteel Bar
+        [41245] = 4,   -- Deadly Saronite Dirk
+        [47556] = 8    -- Crusader Orb
+    },
+    [47570] = { -- Saronite Swordbreakers
+        [37663] = 8,   -- Titansteel Bar
+        [36913] = 20,  -- Saronite Bar
+        [47556] = 4    -- Crusader Orb
+    },
+    [47591] = { -- Breastplate of the White Knight
+        [37663] = 12,  -- Titansteel Bar
+        [35625] = 8,   -- Eternal Life
+        [36925] = 2,   -- Majestic Zircon
+        [47556] = 8    -- Crusader Orb
+    },
+    [47574] = { -- Sunforged Bracers
+        [37663] = 8,   -- Titansteel Bar
+        [35625] = 12,  -- Eternal Life
+        [47556] = 4    -- Crusader Orb
+    },
+    [47593] = { -- Sunforged Breastplate
+        [37663] = 10,  -- Titansteel Bar
+        [35625] = 20,  -- Eternal Life
+        [47556] = 8    -- Crusader Orb
+    },
+    [47585] = { -- Bejeweled Wizard's Bracers
+        [41595] = 8,   -- Spellweave
+        [36934] = 1,   -- Eye of Zul
+        [36919] = 1,   -- Cardinal Ruby
+        [36925] = 1,   -- Majestic Zircon
+        [47556] = 4    -- Crusader Orb
+    },
+    [47603] = { -- Merlin's Robe
+        [41593] = 8,   -- Ebonweave
+        [41595] = 8,   -- Spellweave
+        [34052] = 8,   -- Dream Shard
+        [47556] = 8    -- Crusader Orb
+    },
+    [47587] = { -- Royal Moonshroud Bracers
+        [41594] = 12,  -- Moonshroud
+        [47556] = 4    -- Crusader Orb
+    },
+    [47605] = { -- Royal Moonshroud Robe
+        [41594] = 20,  -- Moonshroud
+        [36922] = 2,   -- King's Amber
+        [47556] = 8    -- Crusader Orb
+    },
+    [47581] = { -- Bracers of Swift Death
+        [38425] = 20,  -- Heavy Borean Leather
+        [35627] = 12,  -- Eternal Shadow
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47599] = { -- Knightbane Carapace
+        [38425] = 24,  -- Heavy Borean Leather
+        [35627] = 20,  -- Eternal Shadow
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47583] = { -- Moonshadow Armguards
+        [38425] = 20,  -- Heavy Borean Leather
+        [35625] = 12,  -- Eternal Life
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47602] = { -- Lunar Eclipse Robes
+        [38425] = 24,  -- Heavy Borean Leather
+        [35625] = 20,  -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47576] = { -- Crusader's Dragonscale Bracers
+        [38557] = 40,  -- Iicy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47595] = { -- Crusader's Dragonscale Breastplate
+        [38557] = 40,  -- Icy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [35625] = 8,   -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47579] = { -- Black Chitin Bracers
+        [38558] = 40,  -- Nerubian Chitin
+        [34057] = 4,   -- Abyss Crystal
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47597] = { -- Ensorcelled Nerubian Breastplate
+        [38558] = 40,  -- Nerubian Chitin
+        [35623] = 8,   -- Eternal Air
+        [34055] = 8,   -- Greater Cosmic Essence
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    }
+}
+
+BOE_200 = {
+    [42435] = { -- Titansteel Shanker
+        [36913] = 6,  -- Saronite Bar
+        [37663] = 6,  -- Titansteel Bar
+        [43102] = 2   -- Frozen Orb
+    },
+    [45085] = { -- Titansteel Spellblade
+        [37663] = 6,  -- Titansteel Bar
+        [34054] = 6,  -- Infinite Dust
+        [43102] = 2   -- Frozen Orb
+    },
+    [41383] = { -- Titansteel Bonecrusher
+        [36913] = 6,  -- Saronite Bar
+        [37663] = 6,  -- Titansteel Bar
+        [43102] = 2   -- Frozen Orb
+    },
+    [41384] = { -- Titansteel Guardian
+        [36913] = 6,  -- Saronite Bar
+        [37663] = 6,  -- Titansteel Bar
+        [43102] = 2   -- Frozen Orb
+    },
+    [41257] = { -- Titansteel Destroyer
+        [36913] = 8,  -- Saronite Bar
+        [37663] = 8,  -- Titansteel Bar
+        [43102] = 2   -- Frozen Orb
+    },
+    [42508] = { -- Titansteel Shield Wall
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 3,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41388] = { -- Brilliant Titansteel Helm
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 4,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41386] = { -- Spiked Titansteel Helm
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 4,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41387] = { -- Tempered Titansteel Helm
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 4,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41394] = { -- Brilliant Titansteel Treads
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 3,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41391] = { -- Spiked Titansteel Treads
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 3,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [41392] = { -- Tempered Titansteel Treads
+        [36913] = 4,  -- Saronite Bar
+        [37663] = 3,  -- Titansteel Bar
+        [43102] = 1   -- Frozen Orb
+    },
+    [43586] = { -- Icebane Chestguard
+        [36913] = 16,  -- Saronite Bar
+        [36860] = 3,   -- Eternal Fire
+        [35622] = 3,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43587] = { -- Icebane Girdle
+        [36913] = 12,  -- Saronite Bar
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
+    },
+    [43588] = { -- Icebane Treads
+        [36913] = 12,  -- Saronite Bar
+        [36860] = 2,   -- Eternal Fire
+        [35622] = 2,   -- Eternal Water
+        [43102] = 1    -- Frozen Orb
     }
 }

@@ -1,3 +1,98 @@
+-- Function to check if item is in MAT
+function IsMat(itemId)
+    return MAT[itemId] ~= nil
+end
+
+-- Function to check if item is in BOE_245_HORDE
+function IsBoe264(itemId)
+    return BOE_264[itemId] ~= nil
+end
+
+-- Function to check if item is in BOE_245_HORDE
+function IsBoe245Horde(itemId)
+    return BOE_245_HORDE[itemId] ~= nil
+end
+
+-- Function to check if item is in BOE_245_ALLIANCE
+function IsBoe245Alliance(itemId)
+    return BOE_245_ALLIANCE[itemId] ~= nil
+end
+
+-- Function to check if item is in BOES_200
+function IsBoe200(itemId)
+    return BOE_200[itemId] ~= nil
+end
+
+-- Function to check if item is in any BOE list
+function IsBoe(itemId)
+    return IsBoe264(itemId) or IsBoe245Horde(itemId) or IsBoe245Alliance(itemId) or IsBoe200(itemId)
+end
+
+--Function to check if item is in any buylist
+function IsItemFromList(itemId)
+    return IsBoe(itemId) or IsMat(itemId)
+end
+
+-- Function to print all BOE 264 item links
+function Print264()
+    print("=== 264 ===")
+    
+    for itemId, recipe in pairs(BOE_264) do
+        local cost = GetCost(itemId)
+        local itemLink = select(2, GetItemInfo(itemId)) or "|cffffffff|Hitem:"..itemId.."|h[Item "..itemId.."]|h|r"
+        
+        print(string.format("%s [%s]", itemLink, cost))
+    end
+end
+
+function PrintBoe264()
+    print("=== 264 ===")
+    
+    for itemId, recipe in pairs(BOE_264) do
+        local cost = GetCost(itemId)
+        local itemLink = select(2, GetItemInfo(itemId)) or "|cffffffff|Hitem:"..itemId.."|h[Item "..itemId.."]|h|r"
+        
+        print(string.format("%s [%s]", itemLink, GetMoneyString(cost)))
+    end
+end
+
+function PrintBoe245()
+    print("=== 245 ===")
+    
+    local faction = UnitFactionGroup("player")
+    local boe245
+    
+    if faction == "Horde" then
+        boe245 = BOE_245_HORDE
+    else
+        boe245 = BOE_245_ALLIANCE
+    end
+    
+    for itemId, recipe in pairs(boe245) do
+        local cost = GetCost(itemId)
+        local itemLink = select(2, GetItemInfo(itemId)) or "|cffffffff|Hitem:"..itemId.."|h[Item "..itemId.."]|h|r"
+        
+        print(string.format("%s [%s]", itemLink, GetMoneyString(cost)))
+    end
+end
+
+function PrintBoe200()
+    print("=== 200 ===")
+    
+    for itemId, recipe in pairs(BOE_200) do
+        local cost = GetCost(itemId)
+        local itemLink = select(2, GetItemInfo(itemId)) or "|cffffffff|Hitem:"..itemId.."|h[Item "..itemId.."]|h|r"
+        
+        print(string.format("%s [%s]", itemLink, GetMoneyString(cost)))
+    end
+end
+
+function PrintBoe()
+    PrintBoe200()
+    PrintBoe245()
+    PrintBoe264()
+end
+
 function GetMoneyString(money)
     local gold = floor(money / 10000)
     local silver = floor((money - gold * 10000) / 100)
@@ -8,19 +103,6 @@ function GetMoneyString(money)
         return format(SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, silver, 0, 0, copper, 0, 0)
     else
         return format(COPPER_AMOUNT_TEXTURE, copper, 0, 0)
-    end
-end
-
-function GetMoneyStringPlain(money)
-    local gold = floor(money / 10000)
-    local silver = floor((money - gold * 10000) / 100)
-    local copper = mod(money, 100)
-    if gold > 0 then
-        return gold..GOLD_AMOUNT_SYMBOL.." "..silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
-    elseif silver > 0 then
-        return silver..SILVER_AMOUNT_SYMBOL.." "..copper..COPPER_AMOUNT_SYMBOL
-    else
-        return copper..COPPER_AMOUNT_SYMBOL
     end
 end
 
@@ -40,99 +122,25 @@ function ShowBuylist()
     end
 end
 
-function ShowBoelist()
-    local order245 = {
-        47573, 47572,   -- Titanium Spikeguards
-        47590, 47589,   -- Titanium Razorplate
-        47571, 47570,   -- Saronite Swordbreakers
-        47592, 47591,   -- Breastplate of the White Knight
-        47575, 47574,   -- Sunforged Bracers
-        47594, 47593,   -- Sunforged Breastplate
-        47586, 47585,   -- Bejeweled Wizard's Bracers
-        47604, 47603,   -- Merlin's Robe
-        47588, 47587,   -- Royal Moonshroud Bracers
-        47606, 47605,   -- Royal Moonshroud Robe
-        47582, 47581,   -- Bracers of Swift Death
-        47600, 47599,   -- Knightbane Carapace
-        47584, 47583,   -- Moonshadow Armguards
-        47601, 47602,   -- Lunar Eclipse Robes
-        47577, 47576,   -- Crusader's Dragonscale Bracers
-        47596, 47595,   -- Crusader's Dragonscale Breastplate
-        47580, 47579,   -- Black Chitin Bracers
-        47598, 47597    -- Ensorcelled Nerubian Breastplate
-    }
+function GetCost(itemId)
+    local cost = 0
     
-    local order264 = {
-        49907, -- Boots of Kingly Upheaval
-        49906, -- Hellfrozen Bonegrinders
-        49903, -- Legplates of Painful Death
-        49904, -- Pillars of Might
-        49905, -- Protectors of Life
-        49902, -- Puresteel Legplates
-        49899, -- Bladeborn Leggings
-        49894, -- Blessed Cenarion Boots
-        49901, -- Draconic Bonesplinter Legguards
-        49896, -- Earthsoul Boots
-        49895, -- Footpads of Impending Death
-        49898, -- Legwraps of Unleashed Nature
-        49900, -- Lightning-Infused Leggings
-        49897, -- Rock-Steady Treads
-        49890, -- Deathfrost Boots
-        49891, -- Leggings of Woven Death
-        49892, -- Lightweave Leggings
-        49893, -- Sandals of Consecration
-}
-    
-    -- Get player faction (returns "Alliance" or "Horde" in 3.3.5)
-    local faction = UnitFactionGroup("player")
-    local startIndex = 1
-    local step = 2
-    
-    if faction == "Horde" then
-        startIndex = 1
-    else
-        startIndex = 2
-    end
-    
-    for i = startIndex, #order245, step do
-        local itemId = order245[i]
-        local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-        print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
-    end
-    
-    for _, itemId in ipairs(order264) do
-        local itemLink = select(2, GetItemInfo(itemId)) or ("|cff00ff00[Item " .. itemId .. "]|r")
-        print(string.format("%s [%s]", itemLink, GetMoneyString(GetCost(itemId))))
-    end
-end
-
-function GetCost(id)
-    if MATS[id] ~= nil then
-        return MATS[id]
-    end
-        
-    if BOES[id] ~= nil then
-        local cost = 0
-        local boe = BOES[id]
+    if IsMat(itemId) then
+        cost = MAT[itemId]
+    elseif IsBoe(itemId) then
+        local boe = BOE_264[itemId] or BOE_245_HORDE[itemId] or BOE_245_ALLIANCE[itemId] or BOE_200[itemId]
         
         for matId, quantity in pairs(boe) do
-            cost = cost + MATS[matId] * quantity
+            cost = cost + MAT[matId] * quantity
         end
-        
-        return cost
     end
     
-    return 0
+    return cost
 end
 
 local function AddNonProfitPriceToTooltip(tooltip, itemId)
     local cost = GetCost(itemId)
     local price = cost / AH_CUT_MULTIPLIER
-    
-    if BOES[itemId] ~= nil then
-        price = math.ceil(price / 10000) * 10000
-    end
-    
     local formattedCost = GetCoinTextureString(cost)
     local formattedPrice = GetCoinTextureString(price)
     

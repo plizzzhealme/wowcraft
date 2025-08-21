@@ -63,18 +63,6 @@ local function getBidAmount(i, overbidProtection)
     return math.max(math.min(safeBid, buyoutPrice / BID_INCREMENT_MULTIPLIER), nextBid)
 end
 
-local function isBoe(itemId)
-    return BOES[itemId] ~= nil
-end
-    
-local function isMat(itemId)
-    return MATS[itemId] ~= nil
-end
-
-local function isItemFromList(itemId)
-    return isBoe(itemId) or isMat(itemId)
-end
-
 function Purchase(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
@@ -89,15 +77,14 @@ function Purchase(msg)
         local itemLink = GetAuctionItemLink("list", i)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
         
-        if isItemFromList(itemId) then
+        if IsItemFromList(itemId) then
             local amountToBid = getBidAmount(i, overbidProtection)
             
             if amountToBid then
-                PlaceAuctionBid("list", i, amountToBid)
-                
                 local _, _, count, _, _, _, _, _, _, _, _, _, _ = GetAuctionItemInfo("list", i)
                 
                 biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                PlaceAuctionBid("list", i, amountToBid)
             end
         end
     end
@@ -119,7 +106,7 @@ function PostAllBoEItems()
             if itemLink then
                 local itemId = GetItemInfoFromHyperlink(itemLink)
                 
-                if isBoe(itemId) then
+                if IsBoe(itemId) then
                     itemCounts[itemId] = (itemCounts[itemId] or 0) + 1
                 end
             end
@@ -137,7 +124,7 @@ function PostAllBoEItems()
                 local itemId = GetItemInfoFromHyperlink(itemLink)
                 
                 -- Check if item is BoE and we have more than one
-                if isBoe(itemId) and itemCounts[itemId] > 1 then
+                if IsBoe(itemId) and itemCounts[itemId] > 1 then
                     local price = GetCost(itemId) / AH_CUT_MULTIPLIER
                     PickupContainerItem(bag, slot)
                     ClickAuctionSellItemButton()

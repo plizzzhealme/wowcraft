@@ -1,4 +1,4 @@
-MATS = {
+MAT = {
     [36860] = 415000,  --Eternal Fire
     [35627] = 415000,  --Eternal Shadow
     [35625] = 370000,  --Eternal Life
