@@ -94,26 +94,6 @@ local DURATION = 3  -- 3 = 48 hours (0:12h, 1:24h, 2:48h, 3:48h in 3.3.5a)
 
 -- Function to post BoE items from bags
 function PostAllBoEItems()
-   -- local itemCounts = {}
-    
-    -- First pass: Count all BoE items
-   -- for bag = 0, 4 do
-  --      local numSlots = GetContainerNumSlots(bag)
-        
-    --    for slot = 1, numSlots do
-     --       local itemLink = GetContainerItemLink(bag, slot)
-            
-      --      if itemLink then
-       --         local itemId = GetItemInfoFromHyperlink(itemLink)
-                
-         --       if IsBoe(itemId) then
-          --          itemCounts[itemId] = (itemCounts[itemId] or 0) + 1
-           --     end
-        --    end
-       -- end
-   -- end
-    
-    -- Second pass: Post all but one of each BoE
     for bag = 0, 3 do
         local numSlots = GetContainerNumSlots(bag)
         
@@ -126,11 +106,12 @@ function PostAllBoEItems()
                 -- Check if item is BoE and we have more than one
                 if IsBoe(itemId) then
                     local price = GetCost(itemId) / AH_CUT_MULTIPLIER
+                    local _, itemCount = GetContainerItemInfo(bag, slot)
+                    
                     PickupContainerItem(bag, slot)
                     ClickAuctionSellItemButton()
                     ClearCursor()
-                    StartAuction(price, price, DURATION, 1, 1)
-                    --itemCounts[itemId] = itemCounts[itemId] - 1
+                    StartAuction(price, price, DURATION, 1, itemCount)
                 end
             end
         end

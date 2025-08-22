@@ -564,5 +564,38 @@ BOE_200 = {
         [44128] = 2,   -- Arctic Fur
         [38557] = 2,   -- Icy Dragonscale
         [43102] = 1    -- Frozen Orb
+    },
+    [41600] = { -- Glacial Bag
+        [41594] = 4,   -- Moonshroud
+        [41593] = 4,   -- Ebonweave
+        [38426] = 1    -- Eternium Thread
+    },
+    [41598] = { -- Mysterious Bag
+        [41595] = 4,   -- Spellweave
+        [41594] = 2,   -- Moonshroud
+        [38426] = 1    -- Eternium Thread
+    },
+    [45773] = { -- Emerald Bag
+        [41594] = 4,   -- Moonshroud
+        [36908] = 6    -- Frost Lotus
+    },
+    [41597] = { -- Abyssal Bag
+        [41593] = 4,   -- Ebonweave
+        [41595] = 2,   -- Spellweave
+        [38426] = 1    -- Eternium Thread
+    },
+    [41599] = { -- Frostweave Bag
+        [41511] = 6,   -- Bolt of Imbued Frostweave
+        [38426] = 2    -- Eternium Thread
+    },
+    [41604] = { -- Sapphire Spellthread
+        [36860] = 4,   -- Eternal Fire
+        [42253] = 4,   -- Iceweb Spider Silk
+        [43102] = 1    -- Frozen Orb
+    },
+    [41602] = { -- Brilliant Spellthread
+        [35625] = 4,   -- Eternal Life
+        [42253] = 4,   -- Iceweb Spider Silk
+        [43102] = 1    -- Frozen Orb
     }
 }
