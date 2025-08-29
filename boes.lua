@@ -597,5 +597,12 @@ BOE_200 = {
         [35625] = 4,   -- Eternal Life
         [42253] = 4,   -- Iceweb Spider Silk
         [43102] = 1    -- Frozen Orb
+    },
+    [42642] = { -- Titanium Impact Band
+        [41163] = 2,   -- Titanium Bar
+        [42225] = 4,   -- Dragon's Eye
+        [36860] = 4,   -- Eternal Fire
+        [35627] = 4,   -- Eternal Shadow
+        [43102] = 1    -- Frozen Orb
     }
 }
