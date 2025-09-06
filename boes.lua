@@ -425,6 +425,13 @@ BOE_200 = {
         [38426] = 1,   -- Eternium Thread
         [43102] = 1    -- Frozen Orb
     },
+    [43583] = {  -- Glacial Robe
+        [41511] = 6,   -- Bolt of Imbued Frostweave
+        [36860] = 3,   -- Eternal Fire
+        [35622] = 3,   -- Eternal Water
+        [38426] = 3,   -- Eternium Thread
+        [43102] = 1    -- Frozen Orb
+    },
     [41610] = { -- Deathchill Cloak
         [41511] = 5,   -- Bolt of Imbued Frostweave
         [36860] = 6,   -- Eternal Fire
