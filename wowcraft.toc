@@ -3,6 +3,7 @@
 ## Version: 1.0
 
 mats.lua
+leatherworking.lua
 boes.lua
 util.lua
 auction.lua
