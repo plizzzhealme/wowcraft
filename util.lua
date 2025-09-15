@@ -134,8 +134,8 @@ function GetCost(itemId)
             cost = cost + GetCost(matId) * quantity
         end
         
-    elseif (LeatherworkingDB[itemId] ~= nil) then
-        local recipe = LeatherworkingDB[itemId]
+    elseif (LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil) then
+        local recipe = LeatherworkingDB[itemId] or TailoringDB[itemId]
         
         for matId, quantity in pairs(recipe) do
             cost = cost + GetCost(matId) * quantity

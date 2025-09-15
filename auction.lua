@@ -104,7 +104,7 @@ function PostAllBoEItems()
                 local itemId = GetItemInfoFromHyperlink(itemLink)
                 
                 -- Check if item is BoE and we have more than one
-                if IsBoe(itemId) or LeatherworkingDB[itemId] ~= nil then
+                if IsBoe(itemId) or LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil then
                     local price = GetCost(itemId) / AH_CUT_MULTIPLIER
                     local _, itemCount = GetContainerItemInfo(bag, slot)
                     
