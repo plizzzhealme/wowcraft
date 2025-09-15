@@ -572,6 +572,14 @@ BOE_200 = {
         [38557] = 2,   -- Icy Dragonscale
         [43102] = 1    -- Frozen Orb
     },
+    [49634] = { -- Drums of the Wild
+        [38425] = 8,   -- Heavy Borean Leather
+        [38561] = 8    -- Jormungar Scale
+    },
+    [49633] = { -- Drums of Forgotten Kings
+        [38425] = 8,   -- Heavy Borean Leather
+        [38557] = 8    -- Icy Dragonscale
+    },
     [41600] = { -- Glacial Bag
         [41594] = 4,   -- Moonshroud
         [41593] = 4,   -- Ebonweave
