@@ -611,7 +611,7 @@ BOE_200 = {
     [43439] = { -- Eviscerator's Treads
         [38425] = 10,  -- Heavy Borean Leather
         [35623] = 1,   -- Eternal Air
-    }
+    },
     [41600] = { -- Glacial Bag
         [41594] = 4,   -- Moonshroud
         [41593] = 4,   -- Ebonweave
