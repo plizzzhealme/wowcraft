@@ -131,7 +131,14 @@ function GetCost(itemId)
         local boe = BOE_264[itemId] or BOE_245_HORDE[itemId] or BOE_245_ALLIANCE[itemId] or BOE_200[itemId]
         
         for matId, quantity in pairs(boe) do
-            cost = cost + MAT[matId] * quantity
+            cost = cost + GetCost(matId) * quantity
+        end
+        
+    elseif (LeatherworkingDB[itemId] ~= nil) then
+        local recipe = LeatherworkingDB[itemId]
+        
+        for matId, quantity in pairs(recipe) do
+            cost = cost + GetCost(matId) * quantity
         end
     end
     
