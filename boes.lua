@@ -580,6 +580,38 @@ BOE_200 = {
         [38425] = 8,   -- Heavy Borean Leather
         [38557] = 8    -- Icy Dragonscale
     },
+    [43436] = { -- Eviscerator's Gauntlets
+        [38425] = 10,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43433] = { -- Eviscerator's Shoulderpads
+        [38425] = 10,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43437] = { -- Eviscerator's Waistguard
+        [38425] = 10,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43435] = { -- Eviscerator's Bindings
+        [38425] = 8,   -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43260] = { -- Eviscerator's Facemask
+        [38425] = 12,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43438] = { -- Eviscerator's Legguards
+        [38425] = 12,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43434] = { -- Eviscerator's Chestguard
+        [38425] = 12,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    },
+    [43439] = { -- Eviscerator's Treads
+        [38425] = 10,  -- Heavy Borean Leather
+        [35623] = 1,   -- Eternal Air
+    }
     [41600] = { -- Glacial Bag
         [41594] = 4,   -- Moonshroud
         [41593] = 4,   -- Ebonweave
