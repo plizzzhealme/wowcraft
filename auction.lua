@@ -78,6 +78,30 @@ function Purchase(msg)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
         
         if IsItemFromList(itemId) then
+            local _, _, count, _, _, _, _, _, buyoutPrice, _, _, _, _ = GetAuctionItemInfo("list", i)
+            local amountToBid = getBidAmount(i, overbidProtection)
+            
+            if amountToBid and amountToBid == buyoutPrice then
+                
+                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                PlaceAuctionBid("list", i, amountToBid)
+            end
+        end
+    end
+end
+
+function Buy()
+    if not AuctionFrame or not AuctionFrame:IsShown() then
+        return
+    end
+    
+    biddingQueue:Reset()
+    
+    for i = 1, numAuctionItems do
+        local itemLink = GetAuctionItemLink("list", i)
+        local itemId = tonumber(itemLink:match("item:(%d+):"))
+        
+        if IsItemFromList(itemId) then
             local amountToBid = getBidAmount(i, overbidProtection)
             
             if amountToBid then
