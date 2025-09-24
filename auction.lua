@@ -96,6 +96,7 @@ function Buy()
     end
     
     biddingQueue:Reset()
+    local numAuctionItems = GetNumAuctionItems("list")
     
     for i = 1, numAuctionItems do
         local itemLink = GetAuctionItemLink("list", i)
