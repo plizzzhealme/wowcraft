@@ -107,9 +107,10 @@ function Buy()
             local itemLink = GetAuctionItemLink("list", i)
             local itemId = tonumber(itemLink:match("item:(%d+):"))
             local buyoutCost = buyoutPrice / count
+            local itemCost = GetCost(itemId)
     
             if 0 < buyoutCost and buyoutCost <= itemCost  then
-                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
                 PlaceAuctionBid("list", i, buyoutPrice)
             end
         end
