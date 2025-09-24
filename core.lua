@@ -5,7 +5,7 @@ SlashCmdList["BUYBID"] = function(msg)
     Purchase(msg)
 end
 
-SLASH_BUY1 = "/buybid"
+SLASH_BUY1 = "/buy"
 SlashCmdList["BUY"] = function()
     Buy()
 end
