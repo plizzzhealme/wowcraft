@@ -1,6 +1,5 @@
 
 BlacksmithingDB = {
-	["Blacksmithing"] = {
 		[7071] = {
 			[3575] = 1,
 		},
@@ -1133,5 +1132,4 @@ BlacksmithingDB = {
 			[3575] = 8,
 			[2605] = 1,
 		},
-	},
-}
+	}
