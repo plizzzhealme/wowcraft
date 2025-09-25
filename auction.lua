@@ -81,7 +81,7 @@ function Purchase(msg)
             local _, _, count, _, _, _, _, _, buyoutPrice, _, _, _, _ = GetAuctionItemInfo("list", i)
             local amountToBid = getBidAmount(i, overbidProtection)
             
-            if amountToBid and amountToBid == buyoutPrice then
+            if amountToBid then
                 
                 biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
                 PlaceAuctionBid("list", i, amountToBid)
