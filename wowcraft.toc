@@ -5,6 +5,7 @@
 mats.lua
 leatherworking.lua
 tailoring.lua
+blacksmithing.lua
 boes.lua
 util.lua
 auction.lua

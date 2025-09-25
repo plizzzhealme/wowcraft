@@ -23,6 +23,10 @@ function IsBoe200(itemId)
     return BOE_200[itemId] ~= nil
 end
 
+function IsProfessionItem(itemId)
+    return LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil or BlacksmithingDB[itemId] ~= nil
+end
+
 -- Function to check if item is in any BOE list
 function IsBoe(itemId)
     return IsBoe264(itemId) or IsBoe245Horde(itemId) or IsBoe245Alliance(itemId) or IsBoe200(itemId)
