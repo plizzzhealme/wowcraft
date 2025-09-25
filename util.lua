@@ -34,7 +34,7 @@ end
 
 --Function to check if item is in any buylist
 function IsItemFromList(itemId)
-    return IsBoe(itemId) or IsMat(itemId)
+    return IsBoe(itemId) or IsMat(itemId) or IsProfessionItem(itemId)
 end
 
 -- Function to print all BOE 264 item links
