@@ -24,7 +24,7 @@ function IsBoe200(itemId)
 end
 
 function IsProfessionItem(itemId)
-    return LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil or BlacksmithingDB[itemId] ~= nil
+    return LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil or BlacksmithingDB[itemId] ~= nil or JewelcraftingDB[itemId] ~= nil
 end
 
 -- Function to check if item is in any BOE list
@@ -138,7 +138,7 @@ function GetCost(itemId)
             cost = cost + GetCost(matId) * quantity
         end
     elseif (IsProfessionItem(itemId)) then
-        local recipe = LeatherworkingDB[itemId] or TailoringDB[itemId] or BlacksmithingDB[itemId]
+        local recipe = LeatherworkingDB[itemId] or TailoringDB[itemId] or BlacksmithingDB[itemId] or JewelcraftingDB[itemId]
         
         for matId, quantity in pairs(recipe) do
             cost = cost + GetCost(matId) * quantity

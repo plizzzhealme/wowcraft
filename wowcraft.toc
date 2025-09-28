@@ -3,6 +3,7 @@
 ## Version: 1.0
 
 mats.lua
+jewelcrafting.lua
 leatherworking.lua
 tailoring.lua
 blacksmithing.lua
