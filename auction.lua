@@ -78,12 +78,12 @@ function Purchase(msg)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
         
         if IsItemFromList(itemId) then
-            local _, _, count, _, _, _, _, _, buyoutPrice, _, _, _, _ = GetAuctionItemInfo("list", i)
+            local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
             local amountToBid = getBidAmount(i, overbidProtection)
             
             if amountToBid then
                 
-                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid)))
+                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid), owner or "noname"))
                 PlaceAuctionBid("list", i, amountToBid)
             end
         end
