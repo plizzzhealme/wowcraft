@@ -103,14 +103,14 @@ function Buy()
         local itemId = tonumber(itemLink:match("item:(%d+):"))
         
         if IsItemFromList(itemId) then
-            local _, _, count, _, _, _, minBid, minIncrement, buyoutPrice, bidAmount, highestBidder, _, _ = GetAuctionItemInfo("list", i)
+            local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
             local itemLink = GetAuctionItemLink("list", i)
             local itemId = tonumber(itemLink:match("item:(%d+):"))
             local buyoutCost = buyoutPrice / count
             local itemCost = GetCost(itemId)
     
             if 0 < buyoutCost and buyoutCost <= itemCost  then
-                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice)))
+                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice), owner or "noname"))
                 PlaceAuctionBid("list", i, buyoutPrice)
             end
         end
