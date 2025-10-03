@@ -51,6 +51,6 @@ MAT = {
     [38426] = 24000,  --Eternium Thread
     [47556] = 2000000,  --Crusader Orb
     [43102] = 610000,  --Frozen Orb
-    [45087] = 2400000,  --Runed Orb
+    [45087] = 2500000,  --Runed Orb
     [49908] = 3600000,  --Primordial Saronite
 }
