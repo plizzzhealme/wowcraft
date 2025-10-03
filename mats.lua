@@ -52,5 +52,5 @@ MAT = {
     [47556] = 2050000,  --Crusader Orb
     [43102] = 630000,  --Frozen Orb
     [45087] = 2500000,  --Runed Orb
-    [49908] = 3600000,  --Primordial Saronite
+    [49908] = 3650000,  --Primordial Saronite
 }
