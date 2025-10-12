@@ -1,4 +1,35 @@
 BlacksmithingDB = {
+    [47572] = { -- Titanium Spikeguards
+        [37663] = 8,   -- Titansteel Bar
+        [41355] = 1,   -- Vengeance Bindings
+        [47556] = 4    -- Crusader Orb
+    },
+    [47589] = { -- Titanium Razorplate
+        [37663] = 10,  -- Titansteel Bar
+        [41245] = 4,   -- Deadly Saronite Dirk
+        [47556] = 8    -- Crusader Orb
+    },
+    [47570] = { -- Saronite Swordbreakers
+        [37663] = 8,   -- Titansteel Bar
+        [36913] = 20,  -- Saronite Bar
+        [47556] = 4    -- Crusader Orb
+    },
+    [47591] = { -- Breastplate of the White Knight
+        [37663] = 12,  -- Titansteel Bar
+        [35625] = 8,   -- Eternal Life
+        [36925] = 2,   -- Majestic Zircon
+        [47556] = 8    -- Crusader Orb
+    },
+    [47574] = { -- Sunforged Bracers
+        [37663] = 8,   -- Titansteel Bar
+        [35625] = 12,  -- Eternal Life
+        [47556] = 4    -- Crusader Orb
+    },
+    [47593] = { -- Sunforged Breastplate
+        [37663] = 10,  -- Titansteel Bar
+        [35625] = 20,  -- Eternal Life
+        [47556] = 8    -- Crusader Orb
+    },
 		[7071] = {
 			[3575] = 1,
 		},

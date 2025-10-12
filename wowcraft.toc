@@ -7,7 +7,6 @@ recipes\jewelcrafting.lua
 recipes\leatherworking.lua
 recipes\tailoring.lua
 recipes\blacksmithing.lua
-boes.lua
 util.lua
 auction.lua
 core.lua

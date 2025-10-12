@@ -14,8 +14,3 @@ SLASH_BUYLIST1 = "/buylist"
 SlashCmdList["BUYLIST"] = function()
     ShowBuylist()
 end
-
-SLASH_BOELIST1 = "/boelist"
-SlashCmdList["BOELIST"] = function()
-    PrintBoe()
-end

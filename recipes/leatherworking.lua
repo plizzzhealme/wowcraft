@@ -1,4 +1,54 @@
 LeatherworkingDB = {
+[47581] = { -- Bracers of Swift Death
+        [38425] = 20,  -- Heavy Borean Leather
+        [35627] = 12,  -- Eternal Shadow
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47599] = { -- Knightbane Carapace
+        [38425] = 24,  -- Heavy Borean Leather
+        [35627] = 20,  -- Eternal Shadow
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47583] = { -- Moonshadow Armguards
+        [38425] = 20,  -- Heavy Borean Leather
+        [35625] = 12,  -- Eternal Life
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47602] = { -- Lunar Eclipse Robes
+        [38425] = 24,  -- Heavy Borean Leather
+        [35625] = 20,  -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47576] = { -- Crusader's Dragonscale Bracers
+        [38557] = 40,  -- Iicy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47595] = { -- Crusader's Dragonscale Breastplate
+        [38557] = 40,  -- Icy Dragonscale
+        [35622] = 8,   -- Eternal Water
+        [35625] = 8,   -- Eternal Life
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
+    [47579] = { -- Black Chitin Bracers
+        [38558] = 40,  -- Nerubian Chitin
+        [34057] = 4,   -- Abyss Crystal
+        [44128] = 6,   -- Arctic Fur
+        [47556] = 4    -- Crusader Orb
+    },
+    [47597] = { -- Ensorcelled Nerubian Breastplate
+        [38558] = 40,  -- Nerubian Chitin
+        [35623] = 8,   -- Eternal Air
+        [34055] = 8,   -- Greater Cosmic Essence
+        [44128] = 8,   -- Arctic Fur
+        [47556] = 8    -- Crusader Orb
+    },
 		[38376] = {
 			[38425] = 4,
 		},

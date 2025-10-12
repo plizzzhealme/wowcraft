@@ -1,5 +1,27 @@
 
 	TailoringDB = {
+    [47585] = { -- Bejeweled Wizard's Bracers
+        [41595] = 8,   -- Spellweave
+        [36934] = 1,   -- Eye of Zul
+        [36919] = 1,   -- Cardinal Ruby
+        [36925] = 1,   -- Majestic Zircon
+        [47556] = 4    -- Crusader Orb
+    },
+    [47603] = { -- Merlin's Robe
+        [41593] = 8,   -- Ebonweave
+        [41595] = 8,   -- Spellweave
+        [34052] = 8,   -- Dream Shard
+        [47556] = 8    -- Crusader Orb
+    },
+    [47587] = { -- Royal Moonshroud Bracers
+        [41594] = 12,  -- Moonshroud
+        [47556] = 4    -- Crusader Orb
+    },
+    [47605] = { -- Royal Moonshroud Robe
+        [41594] = 20,  -- Moonshroud
+        [36922] = 2,   -- King's Amber
+        [47556] = 8    -- Crusader Orb
+    },
 		[7057] = {
 			[4305] = 5,
 			[4291] = 2,
