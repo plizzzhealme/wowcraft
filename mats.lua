@@ -47,6 +47,7 @@ MAT = {
     [36924] = 35000,  --Sky Sapphire
     [36784] = 300000,  --Siren's Tear
     [41334] = 0,  -- Earthsiege Diamond
+    [41266] = 0,  --
     [36932] = 0,  --Dark Jade
     [41355] = 1358000,  --Vengeance Bindings
     [41245] = 617000,  --Deadly Saronite Dirk
