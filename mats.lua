@@ -49,6 +49,7 @@ MAT = {
     [41334] = 0,  -- Earthsiege Diamond
     [41266] = 0,  --Skyflare Diamond
     [36932] = 0,  --Dark Jade
+    [36929] = 0,  --
     [41355] = 1358000,  --Vengeance Bindings
     [41245] = 617000,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
