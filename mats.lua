@@ -56,7 +56,7 @@ MAT = {
     [41245] = 617000,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
     [47556] = 2200000,  --Crusader Orb
-    [43102] = 630000,  --Frozen Orb
+    [43102] = 690000,  --Frozen Orb
     [45087] = 2750000,  --Runed Orb
     [49908] = 3600000,  --Primordial Saronite
 }
