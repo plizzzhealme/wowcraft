@@ -52,6 +52,7 @@ MAT = {
     [36929] = 40000,  --Huge Citrine
     [36917] = 40000,  --Bloodstone
     [36923] = 190000,  --Chaldedony
+    [36921] = 0,  --
     [41355] = 1375249.9999999998,  --Vengeance Bindings
     [41245] = 627062.4999999999,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
