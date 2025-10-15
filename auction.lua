@@ -130,16 +130,16 @@ function PostAllBoEItems()
             if itemLink then
                 local itemId = GetItemInfoFromHyperlink(itemLink)
                 
-                -- Check if item is BoE and we have more than one
                 if not IsMat(itemId) and IsProfessionItem(itemId) then
                     local price = GetCost(itemId) / AH_CUT_MULTIPLIER
-                    local _, itemCount = GetContainerItemInfo(bag, slot)
+                    local _, itemCount, _, _, _, _, _ = GetContainerItemInfo(bag, slot)
+                    local stackSize = 1
                     
                     PickupContainerItem(bag, slot)
                     ClickAuctionSellItemButton()
                     ClearCursor()
-                    StartAuction(price, price, DURATION, 1, itemCount)
-                    print(format("%s %s", itemLink, GetMoneyString(price)))
+                    StartAuction(price, price, DURATION, stackSize, itemCount)
+                    print(format("%s %s x %d", itemLink, GetMoneyString(price), itemCount))
                 end
             end
         end
