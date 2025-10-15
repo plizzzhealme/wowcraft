@@ -53,6 +53,7 @@ MAT = {
     [36923] = 190000,  --Chaldedony
     [36921] = 840000,  --Autumn's Glow
     [36924] = 35000,  --Sky Sapphire
+    [36933] = 0,  --
     [41355] = 1375249.9999999998,  --Vengeance Bindings
     [41245] = 627062.4999999999,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
