@@ -63,7 +63,7 @@ local function getBidAmount(i, overbidProtection)
     return math.max(math.min(safeBid, buyoutPrice / BID_INCREMENT_MULTIPLIER), nextBid)
 end
 
-function Purchase(msg)
+function BuyBidAll(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
     end
@@ -90,7 +90,34 @@ function Purchase(msg)
     end
 end
 
-function Buy()
+function BuyBidMats(msg)
+    if not AuctionFrame or not AuctionFrame:IsShown() then
+        return
+    end
+    
+    biddingQueue:Reset()
+
+    local overbidProtection = tonumber(msg) or BID_INCREMENT_MULTIPLIER
+    local numAuctionItems = GetNumAuctionItems("list")
+    
+    for i = 1, numAuctionItems do
+        local itemLink = GetAuctionItemLink("list", i)
+        local itemId = tonumber(itemLink:match("item:(%d+):"))
+        
+        if IsMat(itemId) then
+            local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
+            local amountToBid = getBidAmount(i, overbidProtection)
+            
+            if amountToBid then
+                
+                biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid), owner or "noname"))
+                PlaceAuctionBid("list", i, amountToBid)
+            end
+        end
+    end
+end
+
+function BuyAll()
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
     end
@@ -120,7 +147,7 @@ end
 local DURATION = 3  -- 3 = 48 hours (0:12h, 1:24h, 2:48h, 3:48h in 3.3.5a)
 
 -- Function to post BoE items from bags
-function PostAllBoEItems()
+function PostItems()
     for bag = 0, 3 do
         local numSlots = GetContainerNumSlots(bag)
         
@@ -157,10 +184,14 @@ function GetItemInfoFromHyperlink(hyperlink)
     return nil
 end
 
--- Slash command to run the function
-SLASH_POSTBOE1 = "/postboe"
-SlashCmdList["POSTBOE"] = function()
-    PostAllBoEItems()
+SLASH_POSTITEMS1 = "/postitems"
+SlashCmdList["POSTITEMS"] = function()
+    PostItems()
+end
+
+SLASH_BUYBIDMATS1 = "/buybidmats"
+SlashCmdList["BUYBIDMATS"] = function(msg)
+    BuyBidMats(msg)
 end
 
 local frame = CreateFrame("FRAME")

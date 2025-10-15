@@ -1,16 +1,11 @@
 --local addonName, addon = {}
 
-SLASH_BUYBID1 = "/buybid"
-SlashCmdList["BUYBID"] = function(msg)
-    Purchase(msg)
+SLASH_BUYBIDALL1 = "/buybidall"
+SlashCmdList["BUYBIDALL"] = function(msg)
+    BuyBidAll(msg)
 end
 
-SLASH_BUY1 = "/buy"
-SlashCmdList["BUY"] = function()
-    Buy()
-end
-
-SLASH_BUYLIST1 = "/buylist"
-SlashCmdList["BUYLIST"] = function()
-    ShowBuylist()
+SLASH_BUYALL1 = "/buyall"
+SlashCmdList["BUYALL"] = function()
+    BuyAll()
 end
