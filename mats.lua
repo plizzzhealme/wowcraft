@@ -44,7 +44,6 @@ MAT = {
     [36922] = 1350000,  --King's Amber
     [36931] = 1150000,  --Ametrine
     [36928] = 750000,  --Dreadstone
-    [36924] = 35000,  --Sky Sapphire
     [36784] = 200000,  --Siren's Tear
     [41334] = 564102.5641025641,  -- Earthsiege Diamond
     [41266] = 470085.4700854701,  --Skyflare Diamond
