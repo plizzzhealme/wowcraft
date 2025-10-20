@@ -32,6 +32,7 @@ MAT = {
     [36908] = 390000,  --Frost Lotus
     [36905] = 315000,  --Lichbloom
     [36903] = 285000,  -- Adder's Tongue
+    [36906] = 0,  --Icethorn
     [33567] = 5333.333333333333,  --Borean Leather Scraps
     [33568] = 26666.666666666664,  --Borean Leather
     [38425] = 160000,  --Heavy Borean Leather
