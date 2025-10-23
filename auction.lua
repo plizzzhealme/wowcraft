@@ -161,12 +161,12 @@ function PostItems()
                     local price = GetCost(itemId) / AH_CUT_MULTIPLIER
                     local _, itemCount, _, _, _, _, _ = GetContainerItemInfo(bag, slot)
                     local stackSize = 1
-                    
+                    local randomProfit = math.random(0,10000)
                     PickupContainerItem(bag, slot)
                     ClickAuctionSellItemButton()
                     ClearCursor()
-                    StartAuction(price, price, DURATION, stackSize, itemCount)
-                    print(format("%s %s x %d", itemLink, GetMoneyString(price), itemCount))
+                    StartAuction(price + randomProfit, price + randomProfit, DURATION, stackSize, itemCount)
+                    print(format("%s %s x %d", itemLink, GetMoneyString(price + randomProfit), itemCount))
                 end
             end
         end
