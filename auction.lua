@@ -5,7 +5,7 @@ local biddingQueue = {
     data = {},
     head = 1,
     tail = 1,
-    maxSize = 500
+    maxSize = 50000
 }
 
 function biddingQueue:Push(item)
