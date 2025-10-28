@@ -50,6 +50,7 @@ MAT = {
     [36784] = 200000,  --Siren's Tear
     [41334] = 547008.547008547,  -- Earthsiege Diamond
     [41266] = 504273.5042735043,  --Skyflare Diamond
+    [36920] = 50000,  --Sun Crystal
     [36932] = 180000,  --Dark Jade
     [36929] = 50000,  --Huge Citrine
     [36917] = 50000,  --Bloodstone
