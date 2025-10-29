@@ -144,7 +144,7 @@ function BuyAll()
     end
 end
 
-local DURATION = 3  -- 3 = 48 hours (0:12h, 1:24h, 2:48h, 3:48h in 3.3.5a)
+local DURATION = 3  -- 3 = 48 hours
 
 -- Function to post BoE items from bags
 function PostItems()
