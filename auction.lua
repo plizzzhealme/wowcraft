@@ -74,7 +74,10 @@ function BuyBidAll(msg)
     local numAuctionItems = GetNumAuctionItems("list")
     
     for i = 1, numAuctionItems do
+        
         local itemLink = GetAuctionItemLink("list", i)
+        print(i)
+        print(itemLink)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
         
         if IsItemFromList(itemId) then
