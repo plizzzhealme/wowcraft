@@ -65,8 +65,8 @@ MAT = {
     [41355] = 1027200,  --Vengeance Bindings
     [41245] = 495449.99999999994,  --Deadly Saronite Dirk
     [38426] = 24000,  --Eternium Thread
-    [47556] = 1200000,  --Crusader Orb
+    [47556] = 1150000,  --Crusader Orb
     [43102] = 400000,  --Frozen Orb
-    [45087] = 1600000,  --Runed Orb
+    [45087] = 1500000,  --Runed Orb
     [49908] = 2550000,  --Primordial Saronite
 }
