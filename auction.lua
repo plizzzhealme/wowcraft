@@ -91,6 +91,28 @@ function BuyBidAll(msg)
     end
 end
 
+function BuyToVendor()
+    if not AuctionFrame or not AuctionFrame:IsShown() then
+        return
+    end
+    
+    biddingQueue:Reset()
+    
+    local numAuctionItems = GetNumAuctionItems("list")
+    
+    for i = 1, numAuctionItems do
+        local itemLink = GetAuctionItemLink("list", i)
+        local itemId = tonumber(itemLink:match("item:(%d+):"))
+        local name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture, vendorPrice = GetItemInfo(itemID)
+        local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
+        
+        if vendorPrice and vendorPrice * count <= buyoutPrice then
+            biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid), owner or "noname"))
+            PlaceAuctionBid("list", i, amountToBid)
+        end
+    end
+end
+
 function BuyBidMats(msg)
     if not AuctionFrame or not AuctionFrame:IsShown() then
         return
@@ -188,6 +210,11 @@ end
 SLASH_POSTITEMS1 = "/postitems"
 SlashCmdList["POSTITEMS"] = function()
     PostItems()
+end
+
+VENDORBUY1 = "/vendorbuy"
+SlashCmdList["VENDORBUY"] = function()
+    BuyToVendor()
 end
 
 SLASH_BUYBIDMATS1 = "/buybidmats"
