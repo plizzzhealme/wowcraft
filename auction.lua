@@ -103,14 +103,16 @@ function BuyToVendor()
     for i = 1, numAuctionItems do
         local itemLink = GetAuctionItemLink("list", i)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
-        local name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture, vendorPrice = GetItemInfo(itemId)
+        local _, _, _, _, _, _, _, _, _, _, vendorPrice = GetItemInfo(itemId)
         local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
         
-        if vendorPrice and vendorPrice * count <= buyoutPrice then
-            biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s]", itemLink, count, GetMoneyString(amountToBid / count), GetMoneyString(amountToBid), owner or "noname"))
-            PlaceAuctionBid("list", i, amountToBid)
+        if buyoutPrice > 0 and vendorPrice > 0 and vendorPrice * count >= buyoutPrice then
+            biddingQueue:Push(string.format("%s: [%d] x [%s] = [%s] from [%s] profit [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice), owner or "noname", GetMoneyString(vendorPrice * count - buyoutPrice)))
+            --print(string.format("%s: [%d] x [%s] = [%s] from [%s] profit [%s]", itemLink, count, GetMoneyString(buyoutPrice / count), GetMoneyString(buyoutPrice), owner or "noname"), GetMoneyString(vendorPrice * count - buyoutPrice))
+            PlaceAuctionBid("list", i, buyoutPrice)
         end
     end
+    print("finished")
 end
 
 function BuyBidMats(msg)
@@ -206,27 +208,3 @@ function GetItemInfoFromHyperlink(hyperlink)
     end
     return nil
 end
-
-SLASH_POSTITEMS1 = "/postitems"
-SlashCmdList["POSTITEMS"] = function()
-    PostItems()
-end
-
-SLASH_VENDORBUY1 = "/vendorbuy"
-SlashCmdList["VENDORBUY"] = function()
-    BuyToVendor()
-end
-
-SLASH_BUYBIDMATS1 = "/buybidmats"
-SlashCmdList["BUYBIDMATS"] = function(msg)
-    BuyBidMats(msg)
-end
-
-local frame = CreateFrame("FRAME")
-frame:RegisterEvent("CHAT_MSG_SYSTEM")
-frame:SetScript("OnEvent", function(self, event, message)
-    if string.find(message, "Bid accepted.") then
-        print(biddingQueue:Pop())
-    end
-end)
-

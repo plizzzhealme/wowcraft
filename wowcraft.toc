@@ -9,4 +9,4 @@ recipes\tailoring.lua
 recipes\blacksmithing.lua
 util.lua
 auction.lua
-core.lua
+commands.lua
