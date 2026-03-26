@@ -103,7 +103,7 @@ function BuyToVendor()
     for i = 1, numAuctionItems do
         local itemLink = GetAuctionItemLink("list", i)
         local itemId = tonumber(itemLink:match("item:(%d+):"))
-        local name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture, vendorPrice = GetItemInfo(itemID)
+        local name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture, vendorPrice = GetItemInfo(itemId)
         local _, _, count, _, _, _, _, _, buyoutPrice, _, _, owner, _ = GetAuctionItemInfo("list", i)
         
         if vendorPrice and vendorPrice * count <= buyoutPrice then
