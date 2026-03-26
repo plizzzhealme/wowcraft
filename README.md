@@ -1,78 +1,64 @@
-# WOWCRAFT
+# Auction Addon Commands
 
 ## Overview
-This addon provides various slash commands to automate auction house interactions
+This addon automates auction house operations including posting crafted items, bidding on materials, and vendor flipping.
 
 ## Commands
 
-### /postitems
-Posts items to the auction house based on your configured settings.
+### `/postitems`
+Posts crafted items to the auction house.
 
 **Usage:** `/postitems`
 
-**Description:** Automatically lists items from your inventory to the auction house. This will use your predefined settings for pricing and duration.
-
----
-
-### `/vendorbuy`
-Sells items to vendors for profit.
-
-**Usage:** `/vendorbuy`
-
-**Description:** Automatically sells items from your inventory to the current vendor that have a vendor sell price higher than their market value or purchase price. Identifies profitable items to flip for vendor profit.
+**Description:** Automatically lists all crafted items from your inventory on the auction house for 48 hours. Prices are automatically calculated based on material costs from your configured buylist.
 
 ---
 
 ### `/buybidmats [value]`
-Places bids on material items in the auction house.
+Bids on and buys materials at profitable prices.
 
 **Usage:** `/buybidmats [value]`
 
 **Parameters:**
-- `[value]` (optional): The overbid protection multiplier. If not specified, uses the default `BID_INCREMENT_MULTIPLIER`.
+- `[value]` (optional): Overbid protection multiplier. Defaults to `BID_INCREMENT_MULTIPLIER` if not specified.
 
-**Description:** Scans the current auction house list and places bids on all items that are classified as materials. The bid amount is calculated using the configured bidding strategy.
+**Description:** Scans the auction house and places bids or performs buyouts on materials that are priced at or below their value according to your buylist.
+
+The `value` parameter (e.g., `1.025`) sets your bid price to `buylist_price / value`. This ensures that if a competitor outbids you, their bid will exceed the buylist price (since the next bid must be 1.05x higher than yours, making it unprofitable for them).
+
+**Example:**
+- If `buylist_price = 100g` and you use `/buybidmats 1.025`:
+  - Your bid = `100g / 1.025 ≈ 97.56g`
+  - Next minimum bid = `97.56g × 1.05 ≈ 102.44g` (above buylist price)
+  - Competitors cannot profitably outbid you
 
 **Examples:**
 - `/buybidmats` - Uses default multiplier
-- `/buybidmats 1.5` - Uses 1.5x multiplier for bids
+- `/buybidmats 1.025` - Sets bid to buylist_price / 1.025
 
 ---
 
 ### `/buybidall [value]`
-Places bids on all items in the auction house.
+Bids on and buys both materials and crafted items.
 
 **Usage:** `/buybidall [value]`
 
 **Parameters:**
-- `[value]` (optional): The overbid protection multiplier. If not specified, uses the default `BID_INCREMENT_MULTIPLIER`.
+- `[value]` (optional): Overbid protection multiplier. Defaults to `BID_INCREMENT_MULTIPLIER` if not specified.
 
-**Description:** Scans the current auction house list and places bids on all items. The bid amount is calculated using the configured bidding strategy.
+**Description:** Same functionality as `/buybidmats`, but additionally targets crafted items made from materials. Scans the auction house and places bids or performs buyouts on both materials and crafted items that are priced at or below their value according to your buylist.
+
+The same overbid protection logic applies, ensuring competitors cannot profitably outbid your offers.
 
 **Examples:**
 - `/buybidall` - Uses default multiplier
-- `/buybidall 2.0` - Uses 2.0x multiplier for bids
+- `/buybidall 1.03` - Sets bid to buylist_price / 1.03
 
 ---
 
-### `/buyall`
-Buys all relevant items from the auction house.
+### `/vendorbuy`
+Buys items from auction house for vendor flipping.
 
-**Usage:** `/buyall`
+**Usage:** `/vendorbuy`
 
-**Description:** Purchases all items that match your configured criteria from the current auction house listing. Unlike the bid commands, this performs immediate buyout purchases rather than placing bids.
-
----
-
-## Notes
-- All auction house commands require the Auction House frame to be open
-- Bids will only be placed on items that match your configured filters
-- The bid amount is calculated by the `getBidAmount()` function based on current auction prices and your protection multiplier
-- Vendor selling requires a vendor window to be open
-
-## Configuration
-Make sure to configure the following settings in your addon:
-- `BID_INCREMENT_MULTIPLIER` - Default multiplier for bid calculations
-- `IsItemFromList()` - Function that defines which items are included in "all" operations
-- `IsMat()` - Function that defines which items are considered materials
-- `getBidAmount()` - Function that calculates the bid amount for each item
+**Description:** Scans the auction house and performs immediate buyouts on items that are listed below their vendor sell price. After purchasing, you can sell these items directly to any vendor for a guaranteed profit.
