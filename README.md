@@ -1,4 +1,4 @@
-# Auction Addon Commands
+# Wowcraft Commands
 
 ## Overview
 This addon automates auction house operations including posting crafted items, bidding on materials, and vendor flipping.
@@ -20,7 +20,7 @@ Bids on and buys materials at profitable prices.
 **Usage:** `/buybidmats [value]`
 
 **Parameters:**
-- `[value]` (optional): Overbid protection multiplier. Defaults to `BID_INCREMENT_MULTIPLIER` if not specified.
+- `[value]` (optional): Overbid protection multiplier. Defaults to `BID_INCREMENT_MULTIPLIER = 1.05` if not specified.
 
 **Description:** Scans the auction house and places bids or performs buyouts on materials that are priced at or below their value according to your buylist.
 
