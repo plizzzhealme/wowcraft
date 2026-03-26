@@ -3,10 +3,12 @@
 ## Version: 1.0
 
 mats.lua
-recipes\jewelcrafting.lua
-recipes\leatherworking.lua
-recipes\tailoring.lua
-recipes\blacksmithing.lua
+recipe\jewelcrafting.lua
+recipe\leatherworking.lua
+recipe\tailoring.lua
+recipe\blacksmithing.lua
 util.lua
-auction.lua
+auction\biddingQueue.lua
+auction\buy.lua
+auction\sell.lua
 commands.lua

@@ -1,13 +1,17 @@
--- Function to check if item is in MAT
+AH_CUT_MULTIPLIER = 0.95
+BID_INCREMENT_MULTIPLIER = 1.05
+
 function IsMat(itemId)
     return MAT[itemId] ~= nil
 end
 
 function IsProfessionItem(itemId)
-    return LeatherworkingDB[itemId] ~= nil or TailoringDB[itemId] ~= nil or BlacksmithingDB[itemId] ~= nil or JewelcraftingDB[itemId] ~= nil
+    return LeatherworkingDB[itemId] ~= nil
+        or TailoringDB[itemId] ~= nil
+        or BlacksmithingDB[itemId] ~= nil
+        or JewelcraftingDB[itemId] ~= nil
 end
 
---Function to check if item is in any buylist
 function IsItemFromList(itemId)
     return IsMat(itemId) or IsProfessionItem(itemId)
 end
@@ -16,6 +20,7 @@ function GetMoneyString(money)
     local gold = floor(money / 10000)
     local silver = floor((money - gold * 10000) / 100)
     local copper = mod(money, 100)
+    
     if gold > 0 then
         return format(GOLD_AMOUNT_TEXTURE.." "..SILVER_AMOUNT_TEXTURE.." "..COPPER_AMOUNT_TEXTURE, gold, 0, 0, silver, 0, 0, copper, 0, 0)
     elseif silver > 0 then
@@ -64,3 +69,14 @@ GameTooltip:HookScript("OnTooltipSetItem", function(tooltip)
         end
     end
 end)
+
+-- Helper function to extract item ID from hyperlink
+function GetItemInfoFromHyperlink(hyperlink)
+    if not hyperlink then return nil end
+    local _, _, itemString = string.find(hyperlink, "|H(.+)|h%[.+%]")
+    if itemString then
+        local _, itemId = strsplit(":", itemString)
+        return tonumber(itemId)
+    end
+    return nil
+end
