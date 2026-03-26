@@ -80,3 +80,18 @@ function GetItemInfoFromHyperlink(hyperlink)
     end
     return nil
 end
+
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:SetScript("OnEvent", function()
+    print("|cff00ff00Wowcraft loaded!|r Type |cffffaa00/wowcraft|r to see commands")
+end)
+
+function ShowWowcraftHelp()
+    print("|cff00ff00=== Wowcraft Commands ===|r")
+    print("|cffffaa00/postitems|r - Post crafted items (48h)")
+    print("|cffffaa00/buybidmats [overbidProtection]|r - Bid on materials")
+    print("  bid = buylist_price / overbidProtection")
+    print("|cffffaa00/buybidall [overbidProtection]|r  - Bid on mats + crafted items")
+    print("|cffffaa00/vendorbuy|r - Buy AH items below vendor price")
+end

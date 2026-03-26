@@ -17,3 +17,8 @@ SLASH_BUYBIDALL1 = "/buybidall"
 SlashCmdList["BUYBIDALL"] = function(msg)
     BuyAll(msg)
 end
+
+SLASH_WOWCRAFT1 = "/wowcraft"
+SlashCmdList["WOWCRAFT"] = function()
+    ShowWowcraftHelp()
+end
