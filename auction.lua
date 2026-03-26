@@ -212,7 +212,7 @@ SlashCmdList["POSTITEMS"] = function()
     PostItems()
 end
 
-VENDORBUY1 = "/vendorbuy"
+SLASH_VENDORBUY1 = "/vendorbuy"
 SlashCmdList["VENDORBUY"] = function()
     BuyToVendor()
 end
